@@ -27,6 +27,5 @@ namespace DTO
 
         [StringLength(100)]
         public string Reason { get; set; }
-        
     }
 }

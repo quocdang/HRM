@@ -9,7 +9,6 @@ namespace DTO
     [Table("POSITION")]
     public partial class POSITION
     {
-
         [StringLength(10)]
         public string PositionID { get; set; }
 

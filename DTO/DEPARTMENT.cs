@@ -9,8 +9,6 @@ namespace DTO
     [Table("DEPARTMENT")]
     public partial class DEPARTMENT
     {
-        
-
         [Key]
         [StringLength(10)]
         public string DeptID { get; set; }
@@ -23,6 +21,5 @@ namespace DTO
 
         [StringLength(200)]
         public string Note { get; set; }
-
     }
 }

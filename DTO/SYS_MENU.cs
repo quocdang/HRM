@@ -8,7 +8,6 @@ namespace DTO
 
     public partial class SYS_MENU
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(200)]

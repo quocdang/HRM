@@ -13,11 +13,14 @@ namespace DTO
         }
 
         public virtual DbSet<ALLOWANCE> ALLOWANCEs { get; set; }
+        public virtual DbSet<CANDIDATE> CANDIDATEs { get; set; }
         public virtual DbSet<CONTRACT> CONTRACTs { get; set; }
         public virtual DbSet<CONTRACTTYPE> CONTRACTTYPEs { get; set; }
         public virtual DbSet<DEDUCTION> DEDUCTIONs { get; set; }
         public virtual DbSet<DEPARTMENT> DEPARTMENTs { get; set; }
         public virtual DbSet<DISCIPLINE> DISCIPLINEs { get; set; }
+        public virtual DbSet<EMP_ALLOWANCE> EMP_ALLOWANCE { get; set; }
+        public virtual DbSet<EMP_DEDUCTED> EMP_DEDUCTED { get; set; }
         public virtual DbSet<EMPLOYEE> EMPLOYEEs { get; set; }
         public virtual DbSet<GROUP> GROUPs { get; set; }
         public virtual DbSet<HISTORY> HISTORies { get; set; }
@@ -31,7 +34,6 @@ namespace DTO
         public virtual DbSet<SYS_USERGROUP> SYS_USERGROUP { get; set; }
         public virtual DbSet<TRAINNING> TRAINNINGs { get; set; }
         public virtual DbSet<WORKING> WORKINGs { get; set; }
-        public virtual DbSet<CANDIDATE> CANDIDATEs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,12 +41,25 @@ namespace DTO
                 .Property(e => e.Code)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<ALLOWANCE>()
+                .Property(e => e.Money)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<CANDIDATE>()
+                .Property(e => e.CandidateCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CANDIDATE>()
+                .Property(e => e.ExpectSalary)
+                .HasPrecision(19, 4);
+
             modelBuilder.Entity<CONTRACT>()
                 .Property(e => e.ContractCode)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CONTRACTTYPE>()
-                .Property(e => e.ID);
+            modelBuilder.Entity<CONTRACT>()
+                .Property(e => e.Salary)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<DEDUCTION>()
                 .Property(e => e.Code)
@@ -56,6 +71,22 @@ namespace DTO
 
             modelBuilder.Entity<DISCIPLINE>()
                 .Property(e => e.EmployeeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<EMP_ALLOWANCE>()
+                .Property(e => e.EmployeeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<EMP_ALLOWANCE>()
+                .Property(e => e.AllowanceCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<EMP_DEDUCTED>()
+                .Property(e => e.EmployeeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<EMP_DEDUCTED>()
+                .Property(e => e.DeductCode)
                 .IsUnicode(false);
 
             modelBuilder.Entity<EMPLOYEE>()
@@ -78,9 +109,6 @@ namespace DTO
                 .Property(e => e.PositionID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<REWARD>()
-                .Property(e => e.ID);
-
             modelBuilder.Entity<ROOM>()
                 .Property(e => e.RoomID)
                 .IsUnicode(false);
@@ -93,25 +121,17 @@ namespace DTO
                 .Property(e => e.ID)
                 .IsFixedLength();
 
+            modelBuilder.Entity<SALARY>()
+                .Property(e => e.RealSalary)
+                .HasPrecision(19, 4);
+
             modelBuilder.Entity<SALARY_ADVANCE>()
                 .Property(e => e.SalaryAdvanceCode)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SYS_USER>()
-                .Property(e => e.UserID);
-
-            modelBuilder.Entity<SYS_USERGROUP>()
-                .Property(e => e.ID);
-
-            modelBuilder.Entity<TRAINNING>()
-                .Property(e => e.ID);
-
-            modelBuilder.Entity<WORKING>()
-                .Property(e => e.ID);
-
-            modelBuilder.Entity<CANDIDATE>()
-                .Property(e => e.CandidateCode)
-                .IsUnicode(false);
+            modelBuilder.Entity<SALARY_ADVANCE>()
+                .Property(e => e.Money)
+                .HasPrecision(19, 4);
         }
     }
 }

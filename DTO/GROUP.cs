@@ -9,7 +9,6 @@ namespace DTO
     [Table("GROUP")]
     public partial class GROUP
     {
-        [Key]
         [StringLength(10)]
         public string GroupID { get; set; }
 

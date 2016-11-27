@@ -9,7 +9,6 @@ namespace DTO
     [Table("REWARD")]
     public partial class REWARD
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -22,6 +21,5 @@ namespace DTO
 
         [StringLength(10)]
         public string DecideNum { get; set; }
-        
     }
 }

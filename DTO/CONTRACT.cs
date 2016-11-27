@@ -28,6 +28,5 @@ namespace DTO
         public DateTime? SignDate { get; set; }
 
         public DateTime? ValidDate { get; set; }
-
     }
 }

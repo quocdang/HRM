@@ -786,9 +786,12 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
-    <Grid>
-        <DataGrid x:Name="LstEmployee" CanUserAddRows="True">
-        </DataGrid>
+
+    <Grid >
+        <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <DataGrid x:Name="LstEmployee" CanUserAddRows="True">
+               
+            </DataGrid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -9,7 +9,6 @@ namespace DTO
     [Table("WORKING")]
     public partial class WORKING
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(20)]
@@ -27,6 +26,5 @@ namespace DTO
 
         [StringLength(10)]
         public string DecideNum { get; set; }
-        
     }
 }

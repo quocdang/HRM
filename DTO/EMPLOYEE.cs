@@ -9,7 +9,6 @@ namespace DTO
     [Table("EMPLOYEE")]
     public partial class EMPLOYEE
     {
-        
         [Key]
         [StringLength(20)]
         public string EmployeeID { get; set; }
@@ -43,11 +42,5 @@ namespace DTO
 
         [StringLength(10)]
         public string PostionID { get; set; }
-
-        public virtual GROUP GROUP { get; set; }
-
-        public virtual POSITION POSITION { get; set; }
-
-        public virtual ROOM ROOM { get; set; }
     }
 }

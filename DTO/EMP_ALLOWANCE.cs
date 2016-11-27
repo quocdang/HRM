@@ -6,17 +6,16 @@ namespace DTO
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DISCIPLINE")]
-    public partial class DISCIPLINE
+    public partial class EMP_ALLOWANCE
     {
         [Key]
-        public int ID { get; set; }
-
+        [Column(Order = 0)]
         [StringLength(20)]
         public string EmployeeID { get; set; }
 
-        public string Descr { get; set; }
-
-        public DateTime? Date { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(10)]
+        public string AllowanceCode { get; set; }
     }
 }

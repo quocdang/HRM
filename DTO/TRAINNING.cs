@@ -9,7 +9,6 @@ namespace DTO
     [Table("TRAINNING")]
     public partial class TRAINNING
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(20)]
@@ -36,6 +35,5 @@ namespace DTO
 
         [StringLength(100)]
         public string Result { get; set; }
-        
     }
 }

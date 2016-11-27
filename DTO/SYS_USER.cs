@@ -20,6 +20,5 @@ namespace DTO
         public int? UserGroup { get; set; }
 
         public bool? Active { get; set; }
-        
     }
 }

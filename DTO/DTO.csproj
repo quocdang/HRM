@@ -58,9 +58,12 @@
     <Compile Include="DEPARTMENT.cs" />
     <Compile Include="DISCIPLINE.cs" />
     <Compile Include="EMPLOYEE.cs" />
+    <Compile Include="EMP_ALLOWANCE.cs" />
+    <Compile Include="EMP_DEDUCTED.cs" />
     <Compile Include="GROUP.cs" />
     <Compile Include="HISTORY.cs" />
     <Compile Include="HRM.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="POSITION.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REWARD.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="SYS_MENU.cs" />
     <Compile Include="SYS_USER.cs" />
     <Compile Include="SYS_USERGROUP.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="TRAINNING.cs" />
     <Compile Include="WORKING.cs" />
   </ItemGroup>

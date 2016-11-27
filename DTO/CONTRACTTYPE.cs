@@ -9,13 +9,11 @@ namespace DTO
     [Table("CONTRACTTYPE")]
     public partial class CONTRACTTYPE
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(50)]
         public string ContractName { get; set; }
 
         public int? Month { get; set; }
-
     }
 }

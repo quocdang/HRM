@@ -8,9 +8,6 @@ namespace DTO
 
     public partial class SYS_USERGROUP
     {
-        
-
-        [Key]
         public int ID { get; set; }
 
         [StringLength(200)]
@@ -18,7 +15,5 @@ namespace DTO
 
         [StringLength(200)]
         public string Descr { get; set; }
-
-        
     }
 }
