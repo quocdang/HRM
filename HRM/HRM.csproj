@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GUI\Candicates.xaml.cs">
+      <DependentUpon>Candicates.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,10 @@
       <DependentUpon>Paysheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlTab\WPFTabbedMDI.cs" />
+    <Page Include="GUI\Candicates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Employees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
