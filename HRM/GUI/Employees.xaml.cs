@@ -17,19 +17,47 @@ using DTO;
 using System.Data;
 using System.ComponentModel;
 using System.Collections;
+using System.Collections.ObjectModel;
+
 namespace HRM
 {
+    
     public partial class Employees : UserControl,WPFTabbedMDI
     {
+        public IEnumerable lmDB;
         public Employees()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.DsEmployee());
             LstEmployee.ItemsSource = collectionView;
+            lmDB = collectionView;
+            // Load data for combobox
+            XGender.ItemsSource = ListGender.Gender;
+            Department.ItemsSource = BUS.BUS.DsDept();
+            Room.ItemsSource = BUS.BUS.DsRoom();
+            Group.ItemsSource = BUS.BUS.DsGroup();
+            Position.ItemsSource = BUS.BUS.DsPos();
+            LstEmployee.ScrollIntoView(LstEmployee.Items.GetItemAt(LstEmployee.Items.Count -1));
             //LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
 
         }
-
+        public class GenderS
+        {
+            public string Code { set; get; }
+            public string Name { set; get; }
+        }
+        public static class ListGender
+        {
+            static ListGender()
+            {
+                Gender = new ObservableCollection<GenderS>
+                 {
+                     new GenderS{Name = "Nam", Code = "True"},
+                     new GenderS{Name = "Nữ", Code = "False"}
+                 };
+            }
+            public static ObservableCollection<GenderS> Gender { set; get; }
+        }
         #region ITabbedMDI Members
         /// <summary>
         /// Get Employee UserControl to return MDI
@@ -90,17 +118,34 @@ namespace HRM
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(LstEmployee);
-            foreach (DataGridRow item in row_list)
+            foreach (EMPLOYEE item in lmDB)
             {
-                TextBlock r = LstEmployee.Columns[0].GetCellContent(item) as TextBlock;
-                TextBlock t = LstEmployee.Columns[1].GetCellContent(item) as TextBlock;
-                TextBlock n = LstEmployee.Columns[2].GetCellContent(item) as TextBlock;
-                BUS.BUS.InsertEmployee(r.Text, t.Text, n.Text);
-            }
-            LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
 
+                EMPLOYEE emp = new EMPLOYEE();
+                emp.EmployeeID = item.EmployeeID;
+                emp.FirstName = item.FirstName;
+                emp.LastName = item.LastName;
+                emp.Gender = item.Gender;
+                emp.DOB = item.DOB;
+                emp.Address = item.Address;
+                emp.Email = item.Email;
+                emp.Phone = item.Phone;
+                emp.PostionID = item.PostionID;
+                emp.DeptID = item.DeptID;
+                emp.RoomID = item.RoomID;
+                emp.GroupID = item.GroupID;
+
+                BUS.BUS.InsertEmployee(emp);
+                LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
+
+            }            
         }
+
+        private string CheckNullComboBox(DataGridRow item,int Index)
+        {
+            return (LstEmployee.Columns[Index].GetCellContent(item) as ComboBox).SelectedValue == null ? "" : (LstEmployee.Columns[11].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+        }
+
         /// <summary>
         /// Delete Method to Delete Item From DataGrid
         /// </summary>
@@ -111,7 +156,12 @@ namespace HRM
             BUS.BUS.DeleteEmployee(EmpID);
             LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
         }
-        
+
         #endregion
+
+        private void LstEmployee_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            LstEmployee.ScrollIntoView(e.Row.Item);
+        }
     }
 }

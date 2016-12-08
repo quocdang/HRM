@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="HRM.GUI.Allowance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HRM.GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <Grid>
+        <StackPanel>
+
+            <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Code}"  Header="Mã Phụ Cấp" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Name}"  Header="Tên Phụ Cấp" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Money}"  Header="Chi Phí" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Descr}"  Header="Mô Tả" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -19,15 +19,15 @@ using System.Windows.Shapes;
 namespace HRM.GUI
 {
     /// <summary>
-    /// Interaction logic for Candicates.xaml
+    /// Interaction logic for SalaryAdvance.xaml
     /// </summary>
-    public partial class Candicates : UserControl, WPFTabbedMDI
+    public partial class SalaryAdvance : UserControl, WPFTabbedMDI
     {
         public IEnumerable lmdb;
-        public Candicates()
+        public SalaryAdvance()
         {
             InitializeComponent();
-            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAdvance());
             Grid.ItemsSource = collectionView;
             lmdb = collectionView;
         }
@@ -60,7 +60,7 @@ namespace HRM.GUI
         {
             get
             {
-                return "Candicate";
+                return "Department";
             }
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace HRM.GUI
         /// </summary>
         public string Title
         {
-            get { return "Candicate"; }
+            get { return "Department"; }
         }
         /// <summary>
         /// Get List Rows From DataGridRow
@@ -91,29 +91,15 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-            foreach (CANDIDATE item in lmdb)
+            foreach (SALARY_ADVANCE item in lmdb)
             {
-                CANDIDATE _Candicate = new CANDIDATE();
-                _Candicate.CandidateCode = item.CandidateCode;
-                _Candicate.Birthday = item.Birthday;
-                _Candicate.BirthPlace = item.BirthPlace;
-                _Candicate.CellPhone = item.CellPhone;
-                _Candicate.ContactAddress = item.ContactAddress;
-                _Candicate.Education = item.Education;
-                _Candicate.Email = item.Email;
-                _Candicate.Experience = item.Experience;
-                _Candicate.FirstName = item.FirstName;
-                _Candicate.Gender = item.Gender;
-                _Candicate.HomePhone = item.HomePhone;
-                _Candicate.Job = item.Job;
-                _Candicate.Language = item.Language;
-                _Candicate.LastName = item.LastName;
-                _Candicate.MainAddress = item.MainAddress;
-                _Candicate.RecruitmentCode = item.RecruitmentCode;
-                _Candicate.Photo = item.Photo;
-                _Candicate.ExpectSalary = item.ExpectSalary;
-                BUS.BUS.InsertCandicate(_Candicate);
+                SALARY_ADVANCE _Advance = new SALARY_ADVANCE();
+                _Advance.SalaryAdvanceCode = item.SalaryAdvanceCode;
+                _Advance.Reason = item.Reason;
+                _Advance.Money = item.Money;
+                _Advance.EmployeeID = item.EmployeeID;
+
+                BUS.BUS.InsertAdvance(_Advance);
             }
         }
 
@@ -123,10 +109,10 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            CANDIDATE can = Grid.SelectedItem as CANDIDATE;
-            string Code = can.CandidateCode;
-            BUS.BUS.DeleteCandicateItem(Code);
-            Grid.ItemsSource = BUS.BUS.ListCandicate();
+            SALARY_ADVANCE Item = Grid.SelectedItem as SALARY_ADVANCE;
+            string ID = Item.SalaryAdvanceCode;
+            BUS.BUS.DeleteAdvanceItem(ID);
+            Grid.ItemsSource = BUS.BUS.ListAdvance();
         }
 
         #endregion

@@ -19,15 +19,15 @@ using System.Windows.Shapes;
 namespace HRM.GUI
 {
     /// <summary>
-    /// Interaction logic for Candicates.xaml
+    /// Interaction logic for Working.xaml
     /// </summary>
-    public partial class Candicates : UserControl, WPFTabbedMDI
+    public partial class Working : UserControl, WPFTabbedMDI
     {
         public IEnumerable lmdb;
-        public Candicates()
+        public Working()
         {
             InitializeComponent();
-            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListWorking());
             Grid.ItemsSource = collectionView;
             lmdb = collectionView;
         }
@@ -60,7 +60,7 @@ namespace HRM.GUI
         {
             get
             {
-                return "Candicate";
+                return "Working";
             }
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace HRM.GUI
         /// </summary>
         public string Title
         {
-            get { return "Candicate"; }
+            get { return "Working"; }
         }
         /// <summary>
         /// Get List Rows From DataGridRow
@@ -91,29 +91,18 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-            foreach (CANDIDATE item in lmdb)
+            foreach (WORKING item in lmdb)
             {
-                CANDIDATE _Candicate = new CANDIDATE();
-                _Candicate.CandidateCode = item.CandidateCode;
-                _Candicate.Birthday = item.Birthday;
-                _Candicate.BirthPlace = item.BirthPlace;
-                _Candicate.CellPhone = item.CellPhone;
-                _Candicate.ContactAddress = item.ContactAddress;
-                _Candicate.Education = item.Education;
-                _Candicate.Email = item.Email;
-                _Candicate.Experience = item.Experience;
-                _Candicate.FirstName = item.FirstName;
-                _Candicate.Gender = item.Gender;
-                _Candicate.HomePhone = item.HomePhone;
-                _Candicate.Job = item.Job;
-                _Candicate.Language = item.Language;
-                _Candicate.LastName = item.LastName;
-                _Candicate.MainAddress = item.MainAddress;
-                _Candicate.RecruitmentCode = item.RecruitmentCode;
-                _Candicate.Photo = item.Photo;
-                _Candicate.ExpectSalary = item.ExpectSalary;
-                BUS.BUS.InsertCandicate(_Candicate);
+                WORKING _work = new WORKING();
+                _work.ID = item.ID;
+                _work.Reason = item.Reason;
+                _work.DecideNum = item.DecideNum;
+                _work.FromDate = item.FromDate;
+                _work.ToDate = item.ToDate;
+                _work.EmployeeID = item.EmployeeID;
+                _work.PositionID = item.PositionID;
+
+                BUS.BUS.InsertWorking(_work);
             }
         }
 
@@ -123,10 +112,10 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            CANDIDATE can = Grid.SelectedItem as CANDIDATE;
-            string Code = can.CandidateCode;
-            BUS.BUS.DeleteCandicateItem(Code);
-            Grid.ItemsSource = BUS.BUS.ListCandicate();
+            WORKING Item = Grid.SelectedItem as WORKING;
+            int ID = Item.ID;
+            BUS.BUS.DeleteWorkingItem(ID);
+            Grid.ItemsSource = BUS.BUS.ListWorking();
         }
 
         #endregion

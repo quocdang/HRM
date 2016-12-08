@@ -26,7 +26,7 @@ namespace HRM
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.DsLuong());
-            LstSalary.ItemsSource = collectionView;
+            LstSalary.ItemsSource = BUS.BUS.DsLuong();
             //PropertyGroupDescription groupDescription = new PropertyGroupDescription();
             //groupDescription.PropertyName = "Age";
         }
@@ -75,15 +75,15 @@ namespace HRM
 
         public void Save()
         {
-            var row_list = GetDataGridRows(LstSalary);
-            foreach (DataGridRow item in row_list)
-            {
-                TextBlock r = LstSalary.Columns[0].GetCellContent(item) as TextBlock;
-                TextBlock t = LstSalary.Columns[1].GetCellContent(item) as TextBlock;
-                TextBlock n = LstSalary.Columns[2].GetCellContent(item) as TextBlock;
-                BUS.BUS.InsertSalary(r.Text, t.Text,Convert.ToInt32(n.Text));
-            }
-            LstSalary.ItemsSource = BUS.BUS.DsLuong();
+            //var row_list = GetDataGridRows(LstSalary);
+            //foreach (DataGridRow item in row_list)
+            //{
+            //    TextBlock r = LstSalary.Columns[0].GetCellContent(item) as TextBlock;
+            //    TextBlock t = LstSalary.Columns[1].GetCellContent(item) as TextBlock;
+            //    TextBlock n = LstSalary.Columns[2].GetCellContent(item) as TextBlock;
+            //    BUS.BUS.InsertSalary(r.Text, t.Text,Convert.ToInt32(n.Text));
+            //}
+            //LstSalary.ItemsSource = BUS.BUS.DsLuong();
         }
 
         public void Delete()

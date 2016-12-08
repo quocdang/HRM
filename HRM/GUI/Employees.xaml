@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HRM"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" Width="1865">
 
     <UserControl.Resources>
         <Color x:Key="WindowColor">#FFE8EDF9</Color>
@@ -786,12 +786,38 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+        <Grid >
+            <DataGrid x:Name="LstEmployee" CanUserAddRows="True" AutoGenerateColumns="False" LoadingRow="LstEmployee_LoadingRow">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}"  Header="Họ" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding LastName}"  Header="Tên" Width="200"/>
+                    <DataGridTemplateColumn Header="Ngày Sinh">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding DOB, StringFormat=dd/MM/yyyy}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding DOB}" Width="200" >
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Address}"  Header="Address" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Email}"  Header="Email" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Phone}" Header="Phone" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="XGender" Header="Giới Tính" SelectedValueBinding="{Binding Gender}" SelectedValuePath="Code" DisplayMemberPath="Name" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="Position" Header="Chức Vụ" SelectedValueBinding="{Binding PostionID}" SelectedValuePath="PositionID" DisplayMemberPath="PositionName" Width="200" />
+                    <DataGridComboBoxColumn x:Name="Department" Header="Bộ Phận"  SelectedValueBinding="{ Binding DeptID}" SelectedValuePath="DeptID" DisplayMemberPath="DeptName" Width="200"/>
+                    <DataGridComboBoxColumn x:Name="Room" Header="Phòng Ban" SelectedValueBinding="{ Binding RoomID}" SelectedValuePath="RoomID" DisplayMemberPath="RoomName" Width="200"/>
+                    <DataGridComboBoxColumn x:Name="Group" Header="Nhóm" SelectedValueBinding="{ Binding GroupID}" SelectedValuePath="GroupID" DisplayMemberPath="GroupName" Width="200"/>
+                </DataGrid.Columns>
 
-    <Grid >
-        <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <DataGrid x:Name="LstEmployee" CanUserAddRows="True">
-               
             </DataGrid>
-        </ScrollViewer>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
+
 </UserControl>

@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="HRM.GUI.Working"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HRM.GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <Grid>
+        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}"  Header="Mã Nhân Viên" Width="100"/>
+                <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100"/>
+                <DataGridTemplateColumn Header="Ngày Sinh">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding FromDate, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding FromDate}" Width="200" >
+                            </DatePicker>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Ngày Sinh">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding ToDate, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding ToDate}" Width="200" >
+                            </DatePicker>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn x:Name="Position" Header="Chức Vụ" SelectedValueBinding="{Binding PositionID}" 
+                                        SelectedValuePath="PositionID" DisplayMemberPath="PositionName" Width="200" />
+                <DataGridTextColumn Binding="{Binding Reason}"  Header="Address" Width="200"/>
+                <DataGridTextColumn Binding="{Binding DecideNum}"  Header="Email" Width="200"/>
+                </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</UserControl>

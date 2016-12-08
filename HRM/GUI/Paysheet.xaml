@@ -787,7 +787,14 @@
     </UserControl.Resources>
 
     <Grid>
-        <DataGrid x:Name="LstSalary" CanUserAddRows="True">
+        <DataGrid x:Name="LstSalary" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Nhân Viên" Binding="{Binding  EmployeeID}"/>
+                <DataGridTextColumn Header="Số Ngày Công" Binding="{Binding WorkDays}"/>
+                <DataGridTextColumn Header="Phụ Cấp" Binding="{Binding Allowance}"/>
+                <DataGridTextColumn Header="Khấu Trừ" Binding="{Binding Deducttion}"/>
+                <DataGridTextColumn Header="Thực Lãnh" Binding="{Binding RealSalary}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>

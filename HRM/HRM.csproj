@@ -73,21 +73,102 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControlTab\CloseTabItem.cs" />
+    <Compile Include="GUI\Allowance.xaml.cs">
+      <DependentUpon>Allowance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Candicates.xaml.cs">
       <DependentUpon>Candicates.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Contract.xaml.cs">
+      <DependentUpon>Contract.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Deduction.xaml.cs">
+      <DependentUpon>Deduction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Department.xaml.cs">
+      <DependentUpon>Department.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Discipline.xaml.cs">
+      <DependentUpon>Discipline.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Expenses.xaml.cs">
+      <DependentUpon>Expenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Group.xaml.cs">
+      <DependentUpon>Group.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Paysheet.xaml.cs">
       <DependentUpon>Paysheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlTab\WPFTabbedMDI.cs" />
+    <Page Include="ControlTab\Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Allowance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Candicates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\Contract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Deduction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Department.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Discipline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Employees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Expenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Group.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\History.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Position.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Reward.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SalaryAdvance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Tranining.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Working.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,11 +180,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUI\Position.xaml.cs">
+      <DependentUpon>Position.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Reward.xaml.cs">
+      <DependentUpon>Reward.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SalaryAdvance.xaml.cs">
+      <DependentUpon>SalaryAdvance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tranining.xaml.cs">
+      <DependentUpon>Tranining.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Working.xaml.cs">
+      <DependentUpon>Working.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="GUI\Paysheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\OutlLookSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +250,10 @@
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{d4b86962-cdb2-4a0a-b8da-be1492f79486}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StyleWindow\StyleWindow.csproj">
+      <Project>{8c83cb07-b796-400f-9551-aa51ae54dfac}</Project>
+      <Name>StyleWindow</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

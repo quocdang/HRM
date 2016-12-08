@@ -19,17 +19,18 @@ using System.Windows.Shapes;
 namespace HRM.GUI
 {
     /// <summary>
-    /// Interaction logic for Candicates.xaml
+    /// Interaction logic for Contract.xaml
     /// </summary>
-    public partial class Candicates : UserControl, WPFTabbedMDI
+    public partial class Contract : UserControl,WPFTabbedMDI
     {
         public IEnumerable lmdb;
-        public Candicates()
+        public Contract()
         {
             InitializeComponent();
-            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListContract());
             Grid.ItemsSource = collectionView;
             lmdb = collectionView;
+
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -60,7 +61,7 @@ namespace HRM.GUI
         {
             get
             {
-                return "Candicate";
+                return "Contract";
             }
         }
         /// <summary>
@@ -68,7 +69,7 @@ namespace HRM.GUI
         /// </summary>
         public string Title
         {
-            get { return "Candicate"; }
+            get { return "Contract"; }
         }
         /// <summary>
         /// Get List Rows From DataGridRow
@@ -91,29 +92,19 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-            foreach (CANDIDATE item in lmdb)
+            foreach (CONTRACT item in lmdb)
             {
-                CANDIDATE _Candicate = new CANDIDATE();
-                _Candicate.CandidateCode = item.CandidateCode;
-                _Candicate.Birthday = item.Birthday;
-                _Candicate.BirthPlace = item.BirthPlace;
-                _Candicate.CellPhone = item.CellPhone;
-                _Candicate.ContactAddress = item.ContactAddress;
-                _Candicate.Education = item.Education;
-                _Candicate.Email = item.Email;
-                _Candicate.Experience = item.Experience;
-                _Candicate.FirstName = item.FirstName;
-                _Candicate.Gender = item.Gender;
-                _Candicate.HomePhone = item.HomePhone;
-                _Candicate.Job = item.Job;
-                _Candicate.Language = item.Language;
-                _Candicate.LastName = item.LastName;
-                _Candicate.MainAddress = item.MainAddress;
-                _Candicate.RecruitmentCode = item.RecruitmentCode;
-                _Candicate.Photo = item.Photo;
-                _Candicate.ExpectSalary = item.ExpectSalary;
-                BUS.BUS.InsertCandicate(_Candicate);
+                CONTRACT _Contract = new CONTRACT();
+                _Contract.ContractCode = item.ContractCode;
+                _Contract.ContractType = item.ContractType;
+                _Contract.FromDate = item.FromDate;
+                _Contract.EmployeeID = item.EmployeeID;
+                _Contract.Salary = item.Salary;
+                _Contract.SignDate = item.SignDate;
+                _Contract.ToDate = item.ToDate;
+                _Contract.ValidDate = item.ValidDate;
+
+                Grid.ItemsSource = BUS.BUS.ListContract();
             }
         }
 
@@ -123,10 +114,10 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            CANDIDATE can = Grid.SelectedItem as CANDIDATE;
-            string Code = can.CandidateCode;
-            BUS.BUS.DeleteCandicateItem(Code);
-            Grid.ItemsSource = BUS.BUS.ListCandicate();
+            CONTRACT cont = Grid.SelectedItem as CONTRACT;
+            string Code = cont.ContractCode;
+            BUS.BUS.DeleteContractItem(Code);
+            Grid.ItemsSource = BUS.BUS.ListContract();
         }
 
         #endregion

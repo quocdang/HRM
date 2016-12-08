@@ -5,8 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HRM.GUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
     <Grid>
-            
+        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CandidateCode}"  Header="Mã Nhân Viên" Width="100"/>
+                <DataGridTextColumn Binding="{Binding RecruitmentCode}"  Header="Họ" Width="100"/>
+                <DataGridTextColumn Binding="{Binding FirstName}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding LastName}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding Gender}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding Birthday}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding BirthPlace}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding MainAddress}"  Header="Tên" Width="200"/>
+                <DataGridTextColumn Binding="{Binding LastName}"  Header="Tên" Width="200"/>
+
+                <DataGridTextColumn Binding="{Binding MainAddress}"  Header="Address" Width="200"/>
+                <DataGridTextColumn Binding="{Binding CellPhone}"  Header="Email" Width="200"/>
+                <DataGridTextColumn Binding="{Binding HomePhone}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Photo}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Language}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Education}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Job}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Experience}" Header="Phone" Width="100"/>
+                <DataGridTextColumn Binding="{Binding ExpectSalary}" Header="Phone" Width="100"/>
+           </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>

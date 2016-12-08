@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HRM
+namespace HRM.GUI
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Expenses.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Expenses : UserControl
     {
-        public Page1()
+        public Expenses()
         {
             InitializeComponent();
         }

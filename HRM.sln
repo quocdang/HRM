@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{D4B86962-CDB2-4A0A-B8DA-BE1492F79486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleWindow", "StyleWindow\StyleWindow.csproj", "{8C83CB07-B796-400F-9551-AA51AE54DFAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D4B86962-CDB2-4A0A-B8DA-BE1492F79486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B86962-CDB2-4A0A-B8DA-BE1492F79486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B86962-CDB2-4A0A-B8DA-BE1492F79486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C83CB07-B796-400F-9551-AA51AE54DFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C83CB07-B796-400F-9551-AA51AE54DFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C83CB07-B796-400F-9551-AA51AE54DFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C83CB07-B796-400F-9551-AA51AE54DFAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

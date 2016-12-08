@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Media.Animation;
-using DTO;
 using BUS;
+using DTO;
 
 namespace HRM
 {
@@ -31,8 +21,9 @@ namespace HRM
             
             InitializeComponent();
             Create();
-            
+            this.AddHandler(ControlTab.CloseTabItem.CloseTabEvent, new RoutedEventHandler(this.CloseTab));
         }
+
         public void Create() // create a dyamic tab from data
         {
             StackPanel stack = new StackPanel();
@@ -149,6 +140,29 @@ namespace HRM
             }
             
         }
+        private void CloseTab(object source, RoutedEventArgs args)
+        {
+            TabItem tabItem = args.Source as TabItem;
+            if (tabItem != null)
+            {
+                TabControl tabControl = tabItem.Parent as TabControl;
+                if (tabControl != null)
+                    tabControl.Items.Remove(tabItem);
+            }
+        }
+        // …
+        //private void tabItemCloseButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DependencyObject obj = sender as DependencyObject;
+
+        //    while (!(obj is TabItem))
+        //    {
+        //        obj = VisualTreeHelper.GetParent(obj);
+        //    }
+
+        //    RightGrid.Items.Remove(obj);
+        //}
+        
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
