@@ -1,8 +1,5 @@
-﻿using DTO;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS;
+using DTO;
+using System.Data;
+using System.ComponentModel;
+using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace HRM.GUI
 {
@@ -28,8 +31,8 @@ namespace HRM.GUI
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListContract());
-            Grid.ItemsSource = collectionView;
             lmdb = collectionView;
+            Grid.ItemsSource = collectionView;
 
         }
         #region ITabbedMDI Members
@@ -92,18 +95,19 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (CONTRACT item in lmdb)
+            foreach (CONTRACT Item in lmdb)
             {
                 CONTRACT _Contract = new CONTRACT();
-                _Contract.ContractCode = item.ContractCode;
-                _Contract.ContractType = item.ContractType;
-                _Contract.FromDate = item.FromDate;
-                _Contract.EmployeeID = item.EmployeeID;
-                _Contract.Salary = item.Salary;
-                _Contract.SignDate = item.SignDate;
-                _Contract.ToDate = item.ToDate;
-                _Contract.ValidDate = item.ValidDate;
+                _Contract.ContractCode = Item.ContractCode;
+                _Contract.ContractType = Item.ContractType;
+                _Contract.FromDate = Item.FromDate;
+                _Contract.EmployeeID = Item.EmployeeID;
+                _Contract.Salary = Item.Salary;
+                _Contract.SignDate = Item.SignDate;
+                _Contract.ToDate = Item.ToDate;
+                _Contract.ValidDate = Item.ValidDate;
 
+                BUS.BUS.InsertContract(_Contract);
                 Grid.ItemsSource = BUS.BUS.ListContract();
             }
         }

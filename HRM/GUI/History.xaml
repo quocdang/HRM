@@ -6,12 +6,43 @@
              xmlns:local="clr-namespace:HRM.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="C:\Users\minhq\OneDrive\Project\HRM\HRM\Style\DataGrid.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Nhân Viên" Binding="{Binding  EmployeeID}"/>
-                <DataGridTextColumn Header="Từ ngày" Binding="{Binding FromDate}"/>
-                <DataGridTextColumn Header="Tới Ngày" Binding="{Binding ToDate}"/>
+                <DataGridTemplateColumn Header="Từ Ngày">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding FromDate, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding FromDate}" Width="200" >
+                            </DatePicker>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Tới Ngày">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding ToDate, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding ToDate}" Width="200" >
+                            </DatePicker>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Nơi làm việc" Binding="{Binding Place}"/>
                 <DataGridTextColumn Header="Vị trí công việc" Binding="{Binding Position}"/>
                 <DataGridTextColumn Header="Lý do nghĩ việc" Binding="{Binding Reason}"/>

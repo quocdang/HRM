@@ -21,10 +21,10 @@ namespace HRM.GUI
     /// <summary>
     /// Interaction logic for Candicates.xaml
     /// </summary>
-    public partial class Candicates : UserControl, WPFTabbedMDI
+    public partial class Candicate : UserControl, WPFTabbedMDI
     {
         public IEnumerable lmdb;
-        public Candicates()
+        public Candicate()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());

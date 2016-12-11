@@ -29,15 +29,14 @@ namespace HRM
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.DsEmployee());
-            LstEmployee.ItemsSource = collectionView;
             lmDB = collectionView;
+            LstEmployee.ItemsSource = collectionView;
             // Load data for combobox
             XGender.ItemsSource = ListGender.Gender;
             Department.ItemsSource = BUS.BUS.DsDept();
             Room.ItemsSource = BUS.BUS.DsRoom();
             Group.ItemsSource = BUS.BUS.DsGroup();
             Position.ItemsSource = BUS.BUS.DsPos();
-            LstEmployee.ScrollIntoView(LstEmployee.Items.GetItemAt(LstEmployee.Items.Count -1));
             //LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
 
         }
@@ -158,10 +157,5 @@ namespace HRM
         }
 
         #endregion
-
-        private void LstEmployee_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            LstEmployee.ScrollIntoView(e.Row.Item);
-        }
     }
 }

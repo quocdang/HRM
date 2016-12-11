@@ -6,13 +6,32 @@
              xmlns:local="clr-namespace:HRM.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="C:\Users\minhq\OneDrive\Project\HRM\HRM\Style\DataGrid.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nhân Viên" Binding="{Binding EmployeeID}"/>
                 <DataGridTextColumn Header="Mã" Binding="{Binding  ID}"/>
                 <DataGridTextColumn Header="Khen Thưởng" Binding="{Binding RewardName}"/>
-                <DataGridTextColumn Header="Ngày Quyết Định" Binding="{Binding DecideDate}"/>
+                <DataGridTemplateColumn Header="Ngày Quyết Định">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding DecideDate, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DecideDate}" Width="200" >
+                            </DatePicker>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Số Quyết Định" Binding="{Binding DecideNum}"/>
             </DataGrid.Columns>
         </DataGrid>

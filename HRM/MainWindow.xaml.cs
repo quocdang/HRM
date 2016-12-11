@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BUS;
 using DTO;
+using System.Windows.Media;
 
 namespace HRM
 {
@@ -21,7 +22,6 @@ namespace HRM
             
             InitializeComponent();
             Create();
-            this.AddHandler(ControlTab.CloseTabItem.CloseTabEvent, new RoutedEventHandler(this.CloseTab));
         }
 
         public void Create() // create a dyamic tab from data
@@ -117,9 +117,7 @@ namespace HRM
                 RightGrid.Visibility = Visibility.Visible;
                 RightGrid.Width = this.ActualWidth;
                 RightGrid.Height = this.ActualHeight;
-
-                //((WPFTabbedMDI)mdiChild).CloseInitiated += new delClosed(CloseTab);
-
+                
                 //create a new tab item
                 TabItem ti = new TabItem();
                 //set the tab item's name to mdi child's unique name
@@ -128,8 +126,10 @@ namespace HRM
                 ti.Header = ((WPFTabbedMDI)mdiChild).Title;
                 //set the content property of the tab item to mdi child
                 ti.Content = mdiChild;
-                //ti.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-                //ti.VerticalContentAlignment = VerticalAlignment.Top;
+
+                ScrollViewer scroll = new ScrollViewer();
+                scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+                scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                 //add the tab item to tab control
                 RightGrid.Items.Add(ti);
                 //set this tab as selected
@@ -140,29 +140,21 @@ namespace HRM
             }
             
         }
-        private void CloseTab(object source, RoutedEventArgs args)
-        {
-            TabItem tabItem = args.Source as TabItem;
-            if (tabItem != null)
-            {
-                TabControl tabControl = tabItem.Parent as TabControl;
-                if (tabControl != null)
-                    tabControl.Items.Remove(tabItem);
-            }
-        }
-        // …
-        //private void tabItemCloseButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DependencyObject obj = sender as DependencyObject;
-
-        //    while (!(obj is TabItem))
-        //    {
-        //        obj = VisualTreeHelper.GetParent(obj);
-        //    }
-
-        //    RightGrid.Items.Remove(obj);
-        //}
         
+        private void tabItemCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            DependencyObject obj = sender as DependencyObject;
+            while (!(obj is TabItem))
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+
+            TabItem tabItem = obj as TabItem;
+            string key = tabItem.Header.ToString();
+            RightGrid.Items.Remove(obj);
+            _mdiChildren.Remove(key);
+        }
+
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
