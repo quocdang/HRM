@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HRM"
              mc:Ignorable="d" 
-             d:DesignHeight="300"  Width="1865">
+             d:DesignHeight="300">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -14,9 +14,17 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <ScrollViewer MinHeight="300" CanContentScroll="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-        <StackPanel>
-            <DataGrid x:Name="LstEmployee" CanUserAddRows="True" AutoGenerateColumns="False">
+    <!--ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="1000" Height="500"-->
+    <ScrollViewer>
+        <Grid>
+        <DataGrid x:Name="LstEmployee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="550" CanUserAddRows="True" AutoGenerateColumns="False" Loaded="LstEmployee_Loaded">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Save"></MenuItem>
+                        <MenuItem Header="Delete"></MenuItem>
+                        <MenuItem Header="Update"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100"/>
                     <DataGridTextColumn Binding="{Binding FirstName}"  Header="Họ" Width="100"/>
@@ -24,15 +32,10 @@
                     <DataGridTemplateColumn Header="Ngày Sinh">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding DOB, StringFormat=dd/MM/yyyy}"></TextBlock>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <DatePicker SelectedDate="{Binding DOB}" Width="200" >
+                                <DatePicker x:Name="DateBirth" SelectedDate="{Binding DOB}" Width="200" >
                                 </DatePicker>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Address}"  Header="Address" Width="200"/>
                     <DataGridTextColumn Binding="{Binding Email}"  Header="Email" Width="200"/>
@@ -40,10 +43,9 @@
                     <DataGridComboBoxColumn x:Name="XGender" Header="Giới Tính" SelectedValueBinding="{Binding Gender}" SelectedValuePath="Code" DisplayMemberPath="Name" Width="100"/>
                     <DataGridComboBoxColumn x:Name="Position" Header="Chức Vụ" SelectedValueBinding="{Binding PostionID}" SelectedValuePath="PositionID" DisplayMemberPath="PositionName" Width="200" />
                     <DataGridComboBoxColumn x:Name="Department" Header="Bộ Phận"  SelectedValueBinding="{ Binding DeptID}" SelectedValuePath="DeptID" DisplayMemberPath="DeptName" Width="200"/>
-                    <DataGridComboBoxColumn x:Name="Room" Header="Phòng Ban" SelectedValueBinding="{ Binding RoomID}" SelectedValuePath="RoomID" DisplayMemberPath="RoomName" Width="200"/>
-                    <DataGridComboBoxColumn x:Name="Group" Header="Nhóm" SelectedValueBinding="{ Binding GroupID}" SelectedValuePath="GroupID" DisplayMemberPath="GroupName" Width="200"/>
+                    <DataGridComboBoxColumn x:Name="Group" Header="Phòng Ban" SelectedValueBinding="{ Binding GroupID}" SelectedValuePath="GroupID" DisplayMemberPath="GroupName" Width="200"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </Grid>
     </ScrollViewer>
 </UserControl>

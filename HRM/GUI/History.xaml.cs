@@ -23,13 +23,12 @@ namespace HRM.GUI
     /// </summary>
     public partial class History : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public History()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListHistory());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,17 +90,22 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (HISTORY item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+
+            foreach (var item in row_list)
             {
+                var FromDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
+                var ToDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
                 HISTORY _History = new HISTORY();
-                _History.ID = item.ID;
-                _History.Place = item.Place;
-                _History.Position = item.Position;
-                _History.Reason = item.Reason;
-                _History.ToDate = item.ToDate;
-                _History.FromDate = item.FromDate;
-                _History.EmployeeID = item.EmployeeID;
+                _History.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
+                _History.Place = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
+                _History.Position = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
+                _History.Reason = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
+                _History.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
+                _History.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
+                _History.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
                 BUS.BUS.InsertHistory(_History);
+                Grid.ItemsSource = BUS.BUS.ListHistory();
             }
         }
 

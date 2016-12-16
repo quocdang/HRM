@@ -29,7 +29,7 @@ namespace HRM.GUI
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,14 +91,18 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (DISCIPLINE item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+            foreach (var item in row_list)
             {
+                var Date = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+
                 DISCIPLINE _Discipline = new DISCIPLINE();
-                _Discipline.ID = item.ID;
-                _Discipline.Date = item.Date;
-                _Discipline.EmployeeID = item.EmployeeID;
-                _Discipline.Descr = item.Descr;
+                _Discipline.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
+                _Discipline.Date = (Date.ContentTemplate.FindName("Date", Date) as DatePicker).SelectedDate;
+                _Discipline.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                _Discipline.Descr = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
                 BUS.BUS.InsertDiscipline(_Discipline);
+                Grid.ItemsSource = BUS.BUS.ListDiscipline();
             }
         }
 

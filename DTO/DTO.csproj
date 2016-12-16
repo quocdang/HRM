@@ -63,11 +63,9 @@
     <Compile Include="GROUP.cs" />
     <Compile Include="HISTORY.cs" />
     <Compile Include="HRM.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="POSITION.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REWARD.cs" />
-    <Compile Include="ROOM.cs" />
     <Compile Include="SALARY.cs" />
     <Compile Include="SALARY_ADVANCE.cs" />
     <Compile Include="SYS_MENU.cs" />

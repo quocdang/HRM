@@ -20,6 +20,8 @@ namespace HRM.GUI
     /// </summary>
     public partial class ReportSalary : UserControl, WPFTabbedMDI
     {
+        HRMDataSetTableAdapters.SALARYTableAdapter _dataAdapter;
+        HRMDataSet salaryDataSet;
         public ReportSalary()
         {
             InitializeComponent();
@@ -71,20 +73,21 @@ namespace HRM.GUI
         {
             if (!_isRptViewerLoaded)
             {
-                ReportDataSource rptDS = new ReportDataSource();
-                HRMDataSet ds = new HRMDataSet();
-                ds.BeginInit();
-                rptDS.Name = "Report Salary";
-                rptDS.Value = ds.SALARY;
-                this.RptViewer.LocalReport.DataSources.Add(rptDS);
-                this.RptViewer.LocalReport.ReportEmbeddedResource = "HRM.Report.Rpt_Luong.rdlc";
-                ds.EndInit();
+                LocalReport report = new LocalReport();
+                report.ReportEmbeddedResource = "HRM.Report.SalaryReport.rdlc";
 
-                HRMDataSetTableAdapters.SALARYTableAdapter salaryAdpt = new HRMDataSetTableAdapters.SALARYTableAdapter();
-                salaryAdpt.ClearBeforeFill = true;
-                salaryAdpt.Fill(ds.SALARY);
-                RptViewer.RefreshReport();
-                _isRptViewerLoaded = true;
+
+                //Create the dataset            
+                salaryDataSet = new HRMDataSet();
+                _dataAdapter = new HRMDataSetTableAdapters.SALARYTableAdapter();
+
+                salaryDataSet.DataSetName = "SalaryDataSet";
+                salaryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+                _dataAdapter.ClearBeforeFill = true;
+
+                //Created datasource and binding source
+                ReportDataSource dataSource = new ReportDataSource();
+                System.Windows.Forms.BindingSource source = new System.Windows.Forms.BindingSource();
             }
         }
 

@@ -13,27 +13,24 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nhân Viên" Binding="{Binding EmployeeID}"/>
-                <DataGridTextColumn Header="Mã" Binding="{Binding  ID}"/>
-                <DataGridTextColumn Header="Khen Thưởng" Binding="{Binding RewardName}"/>
-                <DataGridTemplateColumn Header="Ngày Quyết Định">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock  Text="{Binding DecideDate, StringFormat=dd/MM/yyyy}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding DecideDate}" Width="200" >
-                            </DatePicker>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Số Quyết Định" Binding="{Binding DecideNum}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500" CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
+                    <DataGridTextColumn Header="Mã" Binding="{Binding  ID}"/>
+                    <DataGridTextColumn Header="Khen Thưởng" Binding="{Binding RewardName}"/>
+                    <DataGridTemplateColumn Header="Ngày Quyết Định">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker x:Name="DecideDate" SelectedDate="{Binding DecideDate}" Width="150">
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Số Quyết Định" Binding="{Binding DecideNum}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

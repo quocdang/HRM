@@ -23,13 +23,13 @@ namespace HRM.GUI
     /// </summary>
     public partial class Reward : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public Reward()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListReward());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,14 +91,18 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (REWARD item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+
+            foreach (var item in row_list)
             {
+                var DecideDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+
                 REWARD _Reward = new REWARD();
-                _Reward.ID = item.ID;
-                _Reward.RewardName = item.RewardName;
-                _Reward.EmployeeID = item.EmployeeID;
-                _Reward.DecideNum = item.DecideNum;
-                _Reward.DecideDate = item.DecideDate;
+                _Reward.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
+                _Reward.RewardName = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Reward.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                _Reward.DecideNum = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Reward.DecideDate = (DecideDate.ContentTemplate.FindName("DecideDate", DecideDate) as DatePicker).SelectedDate;
                 BUS.BUS.InsertReward(_Reward);
             }
         }

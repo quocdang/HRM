@@ -13,10 +13,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <ScrollViewer>
     <Grid>
         <StackPanel>
 
-            <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000"
+                      CanUserAddRows="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Code}"  Header="Mã Phụ Cấp" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Tên Phụ Cấp" Width="100"/>
@@ -26,5 +28,6 @@
             </DataGrid>
 
         </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

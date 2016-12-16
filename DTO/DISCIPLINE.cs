@@ -9,7 +9,6 @@ namespace DTO
     [Table("DISCIPLINE")]
     public partial class DISCIPLINE
     {
-        [Key]
         public int ID { get; set; }
 
         [StringLength(20)]

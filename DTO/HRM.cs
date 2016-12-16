@@ -26,7 +26,6 @@ namespace DTO
         public virtual DbSet<HISTORY> HISTORies { get; set; }
         public virtual DbSet<POSITION> POSITIONs { get; set; }
         public virtual DbSet<REWARD> REWARDs { get; set; }
-        public virtual DbSet<ROOM> ROOMs { get; set; }
         public virtual DbSet<SALARY> SALARies { get; set; }
         public virtual DbSet<SALARY_ADVANCE> SALARY_ADVANCE { get; set; }
         public virtual DbSet<SYS_MENU> SYS_MENU { get; set; }
@@ -107,14 +106,6 @@ namespace DTO
 
             modelBuilder.Entity<POSITION>()
                 .Property(e => e.PositionID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ROOM>()
-                .Property(e => e.RoomID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ROOM>()
-                .Property(e => e.GroupID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<SALARY>()

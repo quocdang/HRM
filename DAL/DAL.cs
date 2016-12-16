@@ -64,27 +64,6 @@ namespace DAL
             }
         }
 
-        public List<EMPLOYEE> LstEmpByRoom()
-        {
-            return GetLstEmpByRoom();
-        }
-
-        private List<EMPLOYEE> GetLstEmpByRoom()
-        {
-            using (var db = new HRM())
-            {
-                var LstRoom = db.ROOMs.Select(m => m.RoomID).ToList();
-                List<EMPLOYEE> lstEmpDept = new List<EMPLOYEE>();
-                foreach (var item in LstRoom)
-                {
-                    var ds = db.EMPLOYEEs.SingleOrDefault(m => m.RoomID == item);
-                    lstEmpDept.Add(ds);
-                }
-
-                return lstEmpDept;
-            }
-        }
-
         public static List<SYS_MENU> DsMenuCha(int ID)
         {
             HRM db = new HRM();
@@ -92,6 +71,22 @@ namespace DAL
             return ds;
         }
 
+        public ObservableCollection<CONTRACTTYPE> ListContractType
+        {
+            get { return GetListContractType(); }
+        }
+        public static ObservableCollection<CONTRACTTYPE> GetListContractType()
+        {
+            using (var db = new HRM())
+            {
+                ObservableCollection<CONTRACTTYPE> lstType = new ObservableCollection<CONTRACTTYPE>();
+                foreach (var item in db.CONTRACTTYPEs)
+                {
+                    lstType.Add(item);
+                }
+                return lstType;
+            }
+        }
 
         public ObservableCollection<DEPARTMENT> ListDepartmentItem
         {
@@ -124,23 +119,6 @@ namespace DAL
                     lstPosi.Add(item);
                 }
                 return lstPosi;
-            }
-        }
-
-        public ObservableCollection<ROOM> ListRoomItem
-        {
-            get { return GetListRoomItem(); }
-        }
-        public static ObservableCollection<ROOM> GetListRoomItem()
-        {
-            using (var db = new HRM())
-            {
-                ObservableCollection<ROOM> lstRoom = new ObservableCollection<ROOM>();
-                foreach (var item in db.ROOMs)
-                {
-                    lstRoom.Add(item);
-                }
-                return lstRoom;
             }
         }
 
@@ -415,7 +393,6 @@ namespace DAL
                 emp.Gender = employees.Gender;
                 emp.GroupID = employees.GroupID;
                 emp.PostionID = employees.PostionID;
-                emp.RoomID = employees.RoomID;
                 emp.Address = employees.Address;
                 emp.DeptID = employees.DeptID;
                 emp.DOB = employees.DOB;
@@ -432,7 +409,6 @@ namespace DAL
                 emp.Gender = employees.Gender;
                 emp.GroupID = employees.GroupID;
                 emp.PostionID = employees.PostionID;
-                emp.RoomID = employees.RoomID;
                 emp.Address = employees.Address;
                 emp.DeptID = employees.DeptID;
                 emp.DOB = employees.DOB;

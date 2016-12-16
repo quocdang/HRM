@@ -13,43 +13,35 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}"  Header="Mã Nhân Viên" Width="100"/>
-                <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100"/>
-                <DataGridTemplateColumn Header="Từ Ngày">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock  Text="{Binding FromDate, StringFormat=dd/MM/yyyy}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding FromDate}" Width="200" >
-                            </DatePicker>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Tới Ngày">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock  Text="{Binding ToDate, StringFormat=dd/MM/yyyy}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding ToDate}" Width="200" >
-                            </DatePicker>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridComboBoxColumn x:Name="Position" Header="Chức Vụ" SelectedValueBinding="{Binding PositionID}" 
+    <ScrollViewer>
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500" CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID}"  Header="Mã Nhân Viên" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
+                    <DataGridTemplateColumn Header="Từ Ngày">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker x:Name="FromDate" SelectedDate="{Binding FromDate}" Width="150" >
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Tới Ngày">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker x:Name="ToDate" SelectedDate="{Binding ToDate}" Width="150" >
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridComboBoxColumn x:Name="Position" Header="Chức Vụ" SelectedValueBinding="{Binding PositionID}" 
                                         SelectedValuePath="PositionID" DisplayMemberPath="PositionName" Width="200" />
-                <DataGridTextColumn Binding="{Binding Reason}"  Header="Address" Width="200"/>
-                <DataGridTextColumn Binding="{Binding DecideNum}"  Header="Email" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Reason}"  Header="Address" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding DecideNum}"  Header="Email" Width="200"/>
                 </DataGrid.Columns>
 
-        </DataGrid>
-    </Grid>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

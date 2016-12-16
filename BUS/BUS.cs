@@ -31,10 +31,6 @@ namespace BUS
         {
             return DAL.DAL.GetListPositionItem();
         }
-        public static ObservableCollection<ROOM> DsRoom()
-        {
-            return DAL.DAL.GetListRoomItem();
-        }
         public static ObservableCollection<GROUP> DsGroup()
         {
             return DAL.DAL.GetListGroupItem();
@@ -86,6 +82,10 @@ namespace BUS
         public static ObservableCollection<CONTRACT> ListContract()
         {
             return DAL.DAL.GetListContract(); 
+        }
+        public static ObservableCollection<CONTRACTTYPE> ListContractType()
+        {
+            return DAL.DAL.GetListContractType();
         }
         public static ObservableCollection<DISCIPLINE> ListDiscipline()
         {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,30 @@ namespace HRM.GUI
     /// </summary>
     public partial class Candicate : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public Candicate()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            XGender.ItemsSource = ListGender.Gender;
+
+        }
+        public class GenderS
+        {
+            public string Code { set; get; }
+            public string Name { set; get; }
+        }
+        public static class ListGender
+        {
+            static ListGender()
+            {
+                Gender = new ObservableCollection<GenderS>
+                 {
+                     new GenderS{Name = "Nam", Code = "True"},
+                     new GenderS{Name = "Nữ", Code = "False"}
+                 };
+            }
+            public static ObservableCollection<GenderS> Gender { set; get; }
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -92,39 +110,40 @@ namespace HRM.GUI
         public void Save()
         {
             var row_list = GetDataGridRows(Grid);
-            foreach (CANDIDATE item in lmdb)
+            foreach (var item in row_list)
             {
+                var dateofbirth = (Grid.Columns[5].GetCellContent(item) as ContentPresenter);
                 CANDIDATE _Candicate = new CANDIDATE();
-                _Candicate.CandidateCode = item.CandidateCode;
-                _Candicate.Birthday = item.Birthday;
-                _Candicate.BirthPlace = item.BirthPlace;
-                _Candicate.CellPhone = item.CellPhone;
-                _Candicate.ContactAddress = item.ContactAddress;
-                _Candicate.Education = item.Education;
-                _Candicate.Email = item.Email;
-                _Candicate.Experience = item.Experience;
-                _Candicate.FirstName = item.FirstName;
-                _Candicate.Gender = item.Gender;
-                _Candicate.HomePhone = item.HomePhone;
-                _Candicate.Job = item.Job;
-                _Candicate.Language = item.Language;
-                _Candicate.LastName = item.LastName;
-                _Candicate.MainAddress = item.MainAddress;
-                _Candicate.RecruitmentCode = item.RecruitmentCode;
-                _Candicate.Photo = item.Photo;
-                _Candicate.ExpectSalary = item.ExpectSalary;
+                _Candicate.CandidateCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Birthday = (dateofbirth.ContentTemplate.FindName("DateBirth", dateofbirth) as DatePicker).SelectedDate;
+                _Candicate.BirthPlace = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
+                _Candicate.CellPhone = (Grid.Columns[9].GetCellContent(item) as TextBlock).Text;
+                _Candicate.ContactAddress = (Grid.Columns[8].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Education = (Grid.Columns[13].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Email = (Grid.Columns[11].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Experience = (Grid.Columns[15].GetCellContent(item) as TextBlock).Text;
+                _Candicate.FirstName = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Gender = (bool)(Grid.Columns[4].GetCellContent(item) as ComboBox).SelectedValue;
+                _Candicate.HomePhone = (Grid.Columns[10].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Job = (Grid.Columns[14].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Language = (Grid.Columns[12].GetCellContent(item) as TextBlock).Text;
+                _Candicate.LastName = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                _Candicate.MainAddress = (Grid.Columns[7].GetCellContent(item) as TextBlock).Text;
+                _Candicate.RecruitmentCode = (Grid.Columns[1].GetCellContent(item) as TextBlock).Text;
+                //_Candicate.Photo = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Candicate.ExpectSalary = decimal.Parse((Grid.Columns[16].GetCellContent(item) as TextBlock).Text);
                 BUS.BUS.InsertCandicate(_Candicate);
+                Grid.ItemsSource = BUS.BUS.ListCandicate();
+
             }
         }
-
-
         /// <summary>
         /// Delete Method to Delete Item From DataGrid
         /// </summary>
         public void Delete()
         {
-            CANDIDATE can = Grid.SelectedItem as CANDIDATE;
-            string Code = can.CandidateCode;
+            //CANDIDATE can = Grid.SelectedItem as CANDIDATE;
+            string Code = (Grid.SelectedItem as CANDIDATE).CandidateCode;
             BUS.BUS.DeleteCandicateItem(Code);
             Grid.ItemsSource = BUS.BUS.ListCandicate();
         }

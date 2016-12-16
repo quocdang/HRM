@@ -23,13 +23,12 @@ namespace HRM.GUI
     /// </summary>
     public partial class Tranining : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public Tranining()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListTrainning());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,19 +90,23 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (TRAINNING item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+
+            foreach (var item in row_list)
             {
+                var FromDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
+                var ToDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
                 TRAINNING _train = new TRAINNING();
-                _train.ID = item.ID;
-                _train.Reason = item.Reason;
-                _train.Place = item.Place;
-                _train.Time = item.Time;
-                _train.FromDate = item.FromDate;
-                _train.ToDate = item.ToDate;
-                _train.Result = item.Result;
-                _train.Note = item.Note;
-                _train.EmployeeID = item.EmployeeID;
-                _train.Descr = item.Descr;
+                _train.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
+                _train.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
+                _train.Place = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
+                _train.Time = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
+                _train.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
+                _train.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
+                _train.Result = (Grid.Columns[9].GetCellContent(item) as TextBlock).Text;
+                _train.Note = (Grid.Columns[8].GetCellContent(item) as TextBlock).Text;
+                _train.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                _train.Descr = (Grid.Columns[7].GetCellContent(item) as TextBlock).Text;
                 BUS.BUS.InsertTrainning(_train);
             }
         }

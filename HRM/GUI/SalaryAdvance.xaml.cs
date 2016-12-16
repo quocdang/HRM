@@ -23,13 +23,13 @@ namespace HRM.GUI
     /// </summary>
     public partial class SalaryAdvance : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public SalaryAdvance()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAdvance());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,13 +91,15 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (SALARY_ADVANCE item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+
+            foreach (var item in row_list)
             {
                 SALARY_ADVANCE _Advance = new SALARY_ADVANCE();
-                _Advance.SalaryAdvanceCode = item.SalaryAdvanceCode;
-                _Advance.Reason = item.Reason;
-                _Advance.Money = item.Money;
-                _Advance.EmployeeID = item.EmployeeID;
+                _Advance.SalaryAdvanceCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Advance.Reason = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                _Advance.Money = decimal.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
+                _Advance.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
 
                 BUS.BUS.InsertAdvance(_Advance);
             }

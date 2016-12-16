@@ -13,27 +13,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}"  Header="Mã Nhân Viên" Width="100"/>
-                <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Họ" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Descr}"  Header="Tên" Width="200"/>
-                <DataGridTemplateColumn Header="Ngày Sinh">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock  Text="{Binding Date, StringFormat=dd/MM/yyyy}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Date}" Width="200" >
-                            </DatePicker>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-           </DataGrid.Columns>
+    <ScrollViewer>
 
-        </DataGrid>
-    </Grid>
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000"
+                      CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID}"  Header="Mã" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Descr}"  Header="Mô Tả" Width="200"/>
+                    <DataGridTemplateColumn Header="Ngày Vi Phạm">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker x:Name="Date" SelectedDate="{Binding Date}" Width="200" >
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

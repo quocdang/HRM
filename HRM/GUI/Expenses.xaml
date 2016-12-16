@@ -5,16 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HRM.GUI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="White">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="C:\Users\minhq\OneDrive\Project\HRM\HRM\Style\DataGrid.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+             Background="White">
     <Grid>
-        
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxAllowance" Width="auto" Height="auto" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Name="CheckAllowance" Content="{Binding Name}" Tag="{Binding Code}"></CheckBox>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="listBoxDeduction" Width="auto" Height="auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Name="CheckDeduction" Content="{Binding Name}" Tag="{Binding Code}"></CheckBox>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ComboBox Grid.ColumnSpan="2" x:Name="comboBox"/>
     </Grid>
 </UserControl>

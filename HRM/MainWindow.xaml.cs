@@ -126,10 +126,6 @@ namespace HRM
                 ti.Header = ((WPFTabbedMDI)mdiChild).Title;
                 //set the content property of the tab item to mdi child
                 ti.Content = mdiChild;
-
-                ScrollViewer scroll = new ScrollViewer();
-                scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-                scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                 //add the tab item to tab control
                 RightGrid.Items.Add(ti);
                 //set this tab as selected
@@ -154,7 +150,6 @@ namespace HRM
             RightGrid.Items.Remove(obj);
             _mdiChildren.Remove(key);
         }
-
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

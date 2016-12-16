@@ -26,13 +26,14 @@ namespace HRM.GUI
     /// </summary>
     public partial class Contract : UserControl,WPFTabbedMDI
     {
-        public IEnumerable lmdb;
         public Contract()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListContract());
-            lmdb = collectionView;
             Grid.ItemsSource = collectionView;
+            ContactType.ItemsSource = BUS.BUS.ListContractType();
+            EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+
 
         }
         #region ITabbedMDI Members
@@ -95,17 +96,24 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            foreach (CONTRACT Item in lmdb)
+            var row_list = GetDataGridRows(Grid);
+
+            foreach (var item in row_list)
             {
+                var FromDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+                var ToDate = (Grid.Columns[4].GetCellContent(item) as ContentPresenter);
+                var SignDate = (Grid.Columns[6].GetCellContent(item) as ContentPresenter);
+                var ValidDate = (Grid.Columns[7].GetCellContent(item) as ContentPresenter);
                 CONTRACT _Contract = new CONTRACT();
-                _Contract.ContractCode = Item.ContractCode;
-                _Contract.ContractType = Item.ContractType;
-                _Contract.FromDate = Item.FromDate;
-                _Contract.EmployeeID = Item.EmployeeID;
-                _Contract.Salary = Item.Salary;
-                _Contract.SignDate = Item.SignDate;
-                _Contract.ToDate = Item.ToDate;
-                _Contract.ValidDate = Item.ValidDate;
+                _Contract.ContractCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                _Contract.ContractType = (int)(Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue;
+
+                _Contract.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
+                _Contract.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                _Contract.Salary = decimal.Parse((Grid.Columns[5].GetCellContent(item) as TextBlock).Text);
+                _Contract.SignDate = (SignDate.ContentTemplate.FindName("SignDate", SignDate) as DatePicker).SelectedDate;
+                _Contract.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
+                _Contract.ValidDate = (ValidDate.ContentTemplate.FindName("ValidDate", ValidDate) as DatePicker).SelectedDate;
 
                 BUS.BUS.InsertContract(_Contract);
                 Grid.ItemsSource = BUS.BUS.ListContract();

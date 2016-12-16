@@ -13,15 +13,19 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã Nhóm" Binding="{Binding  GroupID}"/>
-                <DataGridTextColumn Header="Tên Nhóm" Binding="{Binding GroupName}"/>
-                <DataGridTextColumn Header="Bộ Phận" Binding="{Binding DeptID}"/>
-                <DataGridTextColumn Header="Mô Tả" Binding="{Binding Descr}"/>
-                <DataGridTextColumn Header="Chú Thích" Binding="{Binding Note}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <ScrollViewer>
+
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000"
+                      CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Nhóm" Binding="{Binding  GroupID}"/>
+                    <DataGridTextColumn Header="Tên Nhóm" Binding="{Binding GroupName}"/>
+                    <DataGridTextColumn Header="Bộ Phận" Binding="{Binding DeptID}"/>
+                    <DataGridTextColumn Header="Mô Tả" Binding="{Binding Descr}"/>
+                    <DataGridTextColumn Header="Chú Thích" Binding="{Binding Note}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

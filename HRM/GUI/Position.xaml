@@ -13,14 +13,16 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <DataGrid x:Name="Grid" CanUserAddRows="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã Nhóm" Binding="{Binding  PositionID}"/>
-                <DataGridTextColumn Header="Tên Nhóm" Binding="{Binding PositionName}"/>
-                <DataGridTextColumn Header="Mô Tả" Binding="{Binding Descr}"/>
-                <DataGridTextColumn Header="Chú Thích" Binding="{Binding Note}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500" CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Nhóm" Binding="{Binding  PositionID}"/>
+                    <DataGridTextColumn Header="Tên Nhóm" Binding="{Binding PositionName}"/>
+                    <DataGridTextColumn Header="Mô Tả" Binding="{Binding Descr}"/>
+                    <DataGridTextColumn Header="Chú Thích" Binding="{Binding Note}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
