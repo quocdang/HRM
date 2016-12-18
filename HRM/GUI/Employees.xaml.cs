@@ -24,7 +24,8 @@ namespace HRM
     
     public partial class Employees : UserControl,WPFTabbedMDI
     {
-        public IEnumerable lmDB;
+        public EMPLOYEE NewRow;
+        public List<EMPLOYEE> LstEmp;
         public Employees()
         {
             InitializeComponent();
@@ -108,32 +109,26 @@ namespace HRM
         /// </summary>
         public void Save()
         {
-            //var row_list = GetDataGridRows(LstEmployee);
-            //foreach (var item in row_list)
-            //{
-            //    var dateofbirth = (LstEmployee.Columns[3].GetCellContent(item) as ContentPresenter);
-            //    EMPLOYEE emp = new EMPLOYEE();
-            //    emp.EmployeeID = (LstEmployee.Columns[0].GetCellContent(item) as TextBlock).Text;
-            //    emp.FirstName = (LstEmployee.Columns[1].GetCellContent(item) as TextBlock).Text;
-            //    emp.LastName = (LstEmployee.Columns[2].GetCellContent(item) as TextBlock).Text;
-            //    emp.DOB = (dateofbirth.ContentTemplate.FindName("DateBirth", dateofbirth) as DatePicker).SelectedDate;
-            //    emp.Address = (LstEmployee.Columns[4].GetCellContent(item) as TextBlock).Text;
-            //    emp.Email = (LstEmployee.Columns[5].GetCellContent(item) as TextBlock).Text;
-            //    emp.Phone = (LstEmployee.Columns[6].GetCellContent(item) as TextBlock).Text;
-            //    emp.Gender = (bool)(LstEmployee.Columns[7].GetCellContent(item) as ComboBox).SelectedValue;
-            //    emp.PostionID = CheckNullComboBox(item, 8);
-            //    emp.DeptID =  CheckNullComboBox(item, 9);
-            //    emp.GroupID = CheckNullComboBox(item, 10);
+            foreach (EMPLOYEE item in LstEmp)
+            {
+                //var dateofbirth = (LstEmployee.Columns[3].GetCellContent(item) as ContentPresenter);
+                //EMPLOYEE emp = new EMPLOYEE();
+                //emp.EmployeeID = (LstEmployee.Columns[0].GetCellContent(item) as TextBlock).Text;
+                //emp.FirstName = (LstEmployee.Columns[1].GetCellContent(item) as TextBlock).Text;
+                //emp.LastName = (LstEmployee.Columns[2].GetCellContent(item) as TextBlock).Text;
+                //emp.DOB = (dateofbirth.ContentTemplate.FindName("DateBirth", dateofbirth) as DatePicker).SelectedDate;
+                //emp.Address = (LstEmployee.Columns[4].GetCellContent(item) as TextBlock).Text;
+                //emp.Email = (LstEmployee.Columns[5].GetCellContent(item) as TextBlock).Text;
+                //emp.Phone = (LstEmployee.Columns[6].GetCellContent(item) as TextBlock).Text;
+                //emp.Gender = (bool)(LstEmployee.Columns[7].GetCellContent(item) as ComboBox).SelectedValue;
+                //emp.PostionID = CheckNullComboBox(item, 8);
+                //emp.DeptID = CheckNullComboBox(item, 9);
+                //emp.GroupID = CheckNullComboBox(item, 10);
 
-            //    BUS.BUS.InsertEmployee(emp);
-            //    LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
+                BUS.BUS.InsertEmployee(item);
+                LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
 
-            //}
-        }
-
-        private string CheckNullComboBox(DataGridRow item,int Index)
-        {
-            return (LstEmployee.Columns[Index].GetCellContent(item) as ComboBox).SelectedValue == null ? "" : (LstEmployee.Columns[Index].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+            }
         }
 
         /// <summary>
@@ -152,7 +147,6 @@ namespace HRM
         private void LstEmployee_Loaded(object sender, RoutedEventArgs e)
         {
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.DsEmployee());
-            lmDB = collectionView;
             LstEmployee.ItemsSource = collectionView;
             // Load data for combobox
             XGender.ItemsSource = ListGender.Gender;
@@ -161,50 +155,89 @@ namespace HRM
             Position.ItemsSource = BUS.BUS.DsPos();
             //LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
         }
-        bool isInsertMode = false;
-        bool isBeingEdited = false;
-        private void LstEmployee_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void LstEmployee_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-            isBeingEdited = true;
-        }
-
-        private void LstEmployee_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            isInsertMode = true;
-        }
 
         private void LstEmployee_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            EMPLOYEE employee = new EMPLOYEE();
-            EMPLOYEE emp = e.Row.DataContext as EMPLOYEE;
-            if (isInsertMode)
+            LstEmp.Add(NewRow);
+        }
+
+        private void LstEmployee_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = LstEmployee.SelectedItem as EMPLOYEE;
+            FrameworkElement EmpID = LstEmployee.Columns[0].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(TextBox))
             {
-                var InsertRecord = MessageBox.Show("Do you want to add " + emp.FirstName + " as a new emploee?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (InsertRecord == MessageBoxResult.Yes)
-                {
-                    employee.FirstName = emp.FirstName;
-                    employee.LastName = emp.LastName;
-                    employee.EmployeeID = emp.EmployeeID;
-                    employee.DOB = emp.DOB;
-                    employee.Address = employee.Address;
-                    employee.Email = employee.Email;
-                    employee.Phone = employee.Phone;
-                    employee.Gender = employee.Gender;
-                    employee.PostionID = employee.PostionID;
-                    employee.DeptID = employee.DeptID;
-                    employee.GroupID = employee.GroupID;
-                    BUS.BUS.InsertEmployee(employee);
-                    MessageBox.Show(employee.FirstName + " " + employee.LastName + " has being added!", "Inserting Record", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
-                }
-                else
-                    LstEmployee.ItemsSource = BUS.BUS.DsEmployee();
+                var eno = ((TextBox)EmpID).Text.Trim();
+                NewRow.EmployeeID = eno;
             }
+            FrameworkElement FirstName = LstEmployee.Columns[1].GetCellContent(e.Row);
+            if (FirstName.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)FirstName).Text;
+                NewRow.FirstName = eno;
+            }
+            FrameworkElement LastName = LstEmployee.Columns[2].GetCellContent(e.Row);
+            if (LastName.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)LastName).Text;
+                NewRow.LastName = eno;
+            }
+            FrameworkElement dateofbirth = LstEmployee.Columns[3].GetCellContent(e.Row);
+            if (dateofbirth.GetType() == typeof(ContentPresenter))
+            {
+                var _dateofbirth = ((ContentPresenter)dateofbirth);
+                if ((_dateofbirth.ContentTemplate.FindName("dateofbirth", _dateofbirth) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.DOB = (_dateofbirth.ContentTemplate.FindName("dateofbirth", _dateofbirth) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement Address = LstEmployee.Columns[4].GetCellContent(e.Row);
+            if (Address.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Address).Text.Trim();
+                NewRow.Address = eno;
+            }
+            FrameworkElement Email = LstEmployee.Columns[5].GetCellContent(e.Row);
+            if (Email.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Email).Text;
+                NewRow.Email = eno;
+            }
+            FrameworkElement Phone = LstEmployee.Columns[6].GetCellContent(e.Row);
+            if (Phone.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Phone).Text;
+                NewRow.Phone = eno;
+            }
+            FrameworkElement Gender = LstEmployee.Columns[7].GetCellContent(e.Row);
+            if (Gender.GetType() == typeof(ComboBox))
+            {
+                var eno = (bool)((ComboBox)Gender).SelectedValue;
+                NewRow.Gender = eno;
+            }
+            FrameworkElement Position = LstEmployee.Columns[8].GetCellContent(e.Row);
+            if (Position.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)Position).SelectedValue.ToString();
+                NewRow.PostionID = eno;
+            }
+            FrameworkElement DeptID = LstEmployee.Columns[9].GetCellContent(e.Row);
+            if (Gender.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)DeptID).SelectedValue.ToString();
+                NewRow.DeptID = eno;
+            }
+            FrameworkElement GroupID = LstEmployee.Columns[10].GetCellContent(e.Row);
+            if (GroupID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)GroupID).SelectedValue.ToString();
+                NewRow.GroupID = eno;
+            }
+
+
+
+
         }
     }
 }

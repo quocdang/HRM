@@ -95,7 +95,6 @@ namespace HRM.GUI
             foreach (var item in row_list)
             {
                 DEDUCTION _Deduct = new DEDUCTION();
-                _Deduct.Code = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
                 _Deduct.Descr = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
                 _Deduct.Name = (Grid.Columns[1].GetCellContent(item) as TextBlock).Text;
                 _Deduct.Rate = int.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
@@ -110,9 +109,8 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            DEDUCTION ded = Grid.SelectedItem as DEDUCTION;
-            string Code = ded.Code;
-            BUS.BUS.DeleteDeductItem(Code);
+            int ID= (Grid.SelectedItem as DEDUCTION).ID;
+            BUS.BUS.DeleteDeductItem(ID);
             Grid.ItemsSource = BUS.BUS.ListDeduction();
         }
 

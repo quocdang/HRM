@@ -96,7 +96,6 @@ namespace HRM.GUI
             foreach (ALLOWANCE item in lmdb)
             {
                 ALLOWANCE allowance = new ALLOWANCE();
-                allowance.Code =item.Code;
                 allowance.Name = item.Name;
                 allowance.Money= item.Money;
                 allowance.Descr = item.Descr;
@@ -110,9 +109,8 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            ALLOWANCE emp = Grid.SelectedItem as ALLOWANCE;
-            string EmpID = emp.Code;
-            BUS.BUS.DeleteAllowanceItem(EmpID);
+            int ID = (Grid.SelectedItem as ALLOWANCE).ID;
+            BUS.BUS.DeleteAllowanceItem(ID);
             Grid.ItemsSource = BUS.BUS.ListAllowance();
         }
 

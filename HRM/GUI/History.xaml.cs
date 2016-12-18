@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,16 @@ namespace HRM.GUI
     /// </summary>
     public partial class History : UserControl, WPFTabbedMDI
     {
+        List<HISTORY> LstItemChange;
+        HISTORY NewRow;
         public History()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListHistory());
             Grid.ItemsSource = collectionView;
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+            LstItemChange = new List<HISTORY>();
+
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -90,20 +95,21 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
+
             var row_list = GetDataGridRows(Grid);
 
-            foreach (var item in row_list)
+            foreach (HISTORY item in LstItemChange)
             {
-                var FromDate = (Grid.Columns[1].GetCellContent(item) as ContentPresenter);
-                var ToDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
-                HISTORY _History = new HISTORY();
-                _History.Place = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
-                _History.Position = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
-                _History.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
-                _History.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
-                _History.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
-                _History.EmployeeID = (Grid.Columns[0].GetCellContent(item) as ComboBox).SelectedValue.ToString();
-                BUS.BUS.InsertHistory(_History);
+                //var FromDate = (Grid.Columns[1].GetCellContent(item) as ContentPresenter);
+                //var ToDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
+                //HISTORY _History = new HISTORY();
+                //_History.Place = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                //_History.Position = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
+                //_History.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
+                //_History.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
+                //_History.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
+                //_History.EmployeeID = (Grid.Columns[0].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                BUS.BUS.InsertHistory(item);
                 Grid.ItemsSource = BUS.BUS.ListHistory();
             }
         }
@@ -114,12 +120,84 @@ namespace HRM.GUI
         /// </summary>
         public void Delete()
         {
-            HISTORY Item = Grid.SelectedItem as HISTORY;
-            int ID = Item.ID;
-            BUS.BUS.DeleteHistoryItem(ID);
+            //foreach (int ID in LstItemChange)
+            //{
+            //    BUS.BUS.DeleteHistoryItem(ID);
+            //}
+
+            //HISTORY Item = Grid.SelectedItem as HISTORY;
+            //int ID = Item.ID;
+            //BUS.BUS.DeleteHistoryItem(ID);
             Grid.ItemsSource = BUS.BUS.ListHistory();
         }
 
         #endregion
+
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            //FrameworkElement element = Grid.Columns[6].GetCellContent(e.Row);
+            //if (element.GetType() == typeof(CheckBox))
+            //{
+            //    if (((CheckBox)element).IsChecked == true)
+            //    {
+            //        HISTORY Item = Grid.SelectedItem as HISTORY;
+            //        LstItemChange.Add(Item.ID);
+            //    }
+            //}
+            //HISTORY Item = Grid.SelectedItem as HISTORY;
+            LstItemChange.Add(NewRow);
+
+        }
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as HISTORY;
+            FrameworkElement EmpID = Grid.Columns[0].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)EmpID).SelectedValue.ToString();
+                NewRow.EmployeeID = eno;
+            }
+            FrameworkElement FromDate = Grid.Columns[1].GetCellContent(e.Row);
+            if (FromDate.GetType() == typeof(ContentPresenter))
+            {
+                var _FromDate = ((ContentPresenter)FromDate);
+                if ((_FromDate.ContentTemplate.FindName("FromDate", _FromDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.FromDate = (_FromDate.ContentTemplate.FindName("FromDate", _FromDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement ToDate = Grid.Columns[2].GetCellContent(e.Row);
+            if (ToDate.GetType() == typeof(ContentPresenter))
+            {
+                var _ToDate = ((ContentPresenter)ToDate);
+                if ((_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.ToDate = (_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement Place = Grid.Columns[3].GetCellContent(e.Row);
+            if (Place.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Place).Text;
+                NewRow.Place = eno;
+            }
+            FrameworkElement Position = Grid.Columns[4].GetCellContent(e.Row);
+            if (Position.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Position).Text;
+                NewRow.Position = eno;
+            }
+            FrameworkElement Reason = Grid.Columns[5].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)EmpID).Text;
+                NewRow.Reason = eno;
+            }
+           
+
+        }
     }
 }

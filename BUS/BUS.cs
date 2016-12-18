@@ -124,10 +124,10 @@ namespace BUS
         public static void DeleteWorkingItem(int ID) { DAL.DAL.DeleteWorkingItem(ID); }
 
         public static void InsertAllowance(ALLOWANCE Allowance) { DAL.DAL.InsertAllowance(Allowance); }
-        public static void DeleteAllowanceItem(string Code) { DAL.DAL.DeleteAllowanceItem(Code); }
+        public static void DeleteAllowanceItem(int ID) { DAL.DAL.DeleteAllowanceItem(ID); }
 
         public static void InsertDeduction(DEDUCTION Deduct) { DAL.DAL.InsertDeduction(Deduct); }
-        public static void DeleteDeductItem(string Code) { DAL.DAL.DeleteDeductItem(Code); }
+        public static void DeleteDeductItem(int ID) { DAL.DAL.DeleteDeductItem(ID); }
 
         public static void InsertAdvance(SALARY_ADVANCE advance) { DAL.DAL.InsertAdvance(advance); }
         public static void DeleteAdvanceItem(string Code) { DAL.DAL.DeleteAdvanceItem(Code); }
@@ -148,10 +148,10 @@ namespace BUS
         public static void DeleteDisciplineItem(int ID) { DeleteDisciplineItem(ID); }
 
         public static void InsertEmpAllowance(EMP_ALLOWANCE Emp_Allowance) { DAL.DAL.InsertEmpAllowance(Emp_Allowance); }
-        public static void DeleteEmpAllowance(string EmployeeID, string AllowanceCode) { DAL.DAL.DeleteEmpAllowance(EmployeeID, AllowanceCode); }
+        public static void DeleteEmpAllowance(string EmployeeID, int AllowanceCode) { DAL.DAL.DeleteEmpAllowance(EmployeeID, AllowanceCode); }
 
         public static void InsertEmpDeducted(EMP_DEDUCTED Emp_Deducted) { DAL.DAL.InsertEmpDeducted(Emp_Deducted); }
-        public static void DeleteEmpDeducted(string EmployeeID, string DeductedCode) { DAL.DAL.DeleteEmpDeducted(EmployeeID,DeductedCode); }
+        public static void DeleteEmpDeducted(string EmployeeID, int DeductedCode) { DAL.DAL.DeleteEmpDeducted(EmployeeID,DeductedCode); }
 
         public static void InsertPosition(POSITION Position) { DAL.DAL.InsertPosition(Position); }
         public static void DeletePosition(string PositionID) { DAL.DAL.DeletePosition(PositionID); }
