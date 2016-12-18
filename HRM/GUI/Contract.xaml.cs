@@ -26,6 +26,8 @@ namespace HRM.GUI
     /// </summary>
     public partial class Contract : UserControl,WPFTabbedMDI
     {
+        public List<CONTRACT> LstContract;
+        public CONTRACT NewRow;
         public Contract()
         {
             InitializeComponent();
@@ -96,26 +98,25 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
 
-            foreach (var item in row_list)
+            foreach (CONTRACT item in LstContract)
             {
-                var FromDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
-                var ToDate = (Grid.Columns[4].GetCellContent(item) as ContentPresenter);
-                var SignDate = (Grid.Columns[6].GetCellContent(item) as ContentPresenter);
-                var ValidDate = (Grid.Columns[7].GetCellContent(item) as ContentPresenter);
-                CONTRACT _Contract = new CONTRACT();
-                _Contract.ContractCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
-                _Contract.ContractType = (int)(Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue;
+                //var FromDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+                //var ToDate = (Grid.Columns[4].GetCellContent(item) as ContentPresenter);
+                //var SignDate = (Grid.Columns[6].GetCellContent(item) as ContentPresenter);
+                //var ValidDate = (Grid.Columns[7].GetCellContent(item) as ContentPresenter);
+                //CONTRACT _Contract = new CONTRACT();
+                //_Contract.ContractCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                //_Contract.ContractType = (int)(Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue;
 
-                _Contract.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
-                _Contract.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
-                _Contract.Salary = decimal.Parse((Grid.Columns[5].GetCellContent(item) as TextBlock).Text);
-                _Contract.SignDate = (SignDate.ContentTemplate.FindName("SignDate", SignDate) as DatePicker).SelectedDate;
-                _Contract.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
-                _Contract.ValidDate = (ValidDate.ContentTemplate.FindName("ValidDate", ValidDate) as DatePicker).SelectedDate;
+                //_Contract.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
+                //_Contract.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                //_Contract.Salary = decimal.Parse((Grid.Columns[5].GetCellContent(item) as TextBlock).Text);
+                //_Contract.SignDate = (SignDate.ContentTemplate.FindName("SignDate", SignDate) as DatePicker).SelectedDate;
+                //_Contract.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
+                //_Contract.ValidDate = (ValidDate.ContentTemplate.FindName("ValidDate", ValidDate) as DatePicker).SelectedDate;
 
-                BUS.BUS.InsertContract(_Contract);
+                BUS.BUS.InsertContract(item);
                 Grid.ItemsSource = BUS.BUS.ListContract();
             }
         }
@@ -133,5 +134,81 @@ namespace HRM.GUI
         }
 
         #endregion
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as CONTRACT;
+            
+            FrameworkElement ContractCode = Grid.Columns[0].GetCellContent(e.Row);
+            if (ContractCode.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)ContractCode).Text;
+                NewRow.ContractCode = eno;
+            }
+            FrameworkElement ContractType = Grid.Columns[1].GetCellContent(e.Row);
+            if (ContractType.GetType() == typeof(ComboBox))
+            {
+                var eno = int.Parse(((ComboBox)ContractType).SelectedValue.ToString());
+                NewRow.ContractType = eno;
+            }
+            FrameworkElement EmpID = Grid.Columns[2].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)EmpID).SelectedValue.ToString();
+                NewRow.EmployeeID = eno;
+            }
+            FrameworkElement FromDate = Grid.Columns[3].GetCellContent(e.Row);
+            if (FromDate.GetType() == typeof(ContentPresenter))
+            {
+                var _FromDate = ((ContentPresenter)FromDate);
+                if ((_FromDate.ContentTemplate.FindName("FromDate", _FromDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.FromDate = (_FromDate.ContentTemplate.FindName("FromDate", _FromDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement ToDate = Grid.Columns[4].GetCellContent(e.Row);
+            if (ToDate.GetType() == typeof(ContentPresenter))
+            {
+                var _ToDate = ((ContentPresenter)FromDate);
+                if ((_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.ToDate = (_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement Salary = Grid.Columns[5].GetCellContent(e.Row);
+            if (Salary.GetType() == typeof(TextBox))
+            {
+                var eno = decimal.Parse(((TextBox)Salary).Text);
+                NewRow.Salary = eno;
+            }
+            FrameworkElement SignDate = Grid.Columns[6].GetCellContent(e.Row);
+            if (SignDate.GetType() == typeof(ContentPresenter))
+            {
+                var _SignDate = ((ContentPresenter)SignDate);
+                if ((_SignDate.ContentTemplate.FindName("SignDate", _SignDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.SignDate = (_SignDate.ContentTemplate.FindName("SignDate", _SignDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement ValidDate = Grid.Columns[7].GetCellContent(e.Row);
+            if (ValidDate.GetType() == typeof(ContentPresenter))
+            {
+                var _ValidDate = ((ContentPresenter)ValidDate);
+                if ((_ValidDate.ContentTemplate.FindName("ValidDate", _ValidDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.ValidDate = (_ValidDate.ContentTemplate.FindName("ValidDate", _ValidDate) as DatePicker).SelectedDate;
+                }
+
+            }
+
+        }
+
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            LstContract.Add(NewRow);
+        }
     }
 }
