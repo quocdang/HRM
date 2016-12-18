@@ -15,7 +15,7 @@ namespace DTO
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(10)]
-        public string AllowanceCode { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int AllowanceCode { get; set; }
     }
 }

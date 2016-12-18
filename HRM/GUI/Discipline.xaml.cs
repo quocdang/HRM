@@ -97,7 +97,6 @@ namespace HRM.GUI
                 var Date = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
 
                 DISCIPLINE _Discipline = new DISCIPLINE();
-                _Discipline.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
                 _Discipline.Date = (Date.ContentTemplate.FindName("Date", Date) as DatePicker).SelectedDate;
                 _Discipline.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
                 _Discipline.Descr = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;

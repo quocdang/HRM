@@ -97,7 +97,6 @@ namespace HRM.GUI
                 var FromDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
                 var ToDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
                 TRAINNING _train = new TRAINNING();
-                _train.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
                 _train.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
                 _train.Place = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
                 _train.Time = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;

@@ -37,15 +37,14 @@
                     <DataGridTextColumn Binding="{Binding BirthPlace}"  Header="Nơi Sinh" Width="200"/>
                     <DataGridTextColumn Binding="{Binding MainAddress}"  Header="Địa chỉ Chính" Width="200"/>
                     <DataGridTextColumn Binding="{Binding ContactAddress}"  Header="Địa chỉ liên hệ" Width="200"/>
-                    <DataGridTextColumn Binding="{Binding CellPhone}"  Header="Email" Width="200"/>
-                    <DataGridTextColumn Binding="{Binding HomePhone}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Photo}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Language}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Education}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Job}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Experience}" Header="Phone" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding ExpectSalary}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding CellPhone}"  Header="Di Động" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding HomePhone}" Header="Điện Thoại Bàn" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Mail" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Language}" Header="Ngôn Ngữ" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Education}" Header="Trình Độ" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="Job" Header="Vị trí ứng tuyển" SelectedValueBinding="{Binding Job}" SelectedValuePath="PositionID" DisplayMemberPath="PositionName" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Experience}" Header="Kinh Nghiệm" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding ExpectSalary}" Header="Lương đề nghị" Width="100"/>
                 </DataGrid.Columns>
 
             </DataGrid>

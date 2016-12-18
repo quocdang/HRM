@@ -9,9 +9,7 @@ namespace DTO
     [Table("DEDUCTION")]
     public partial class DEDUCTION
     {
-        [Key]
-        [StringLength(10)]
-        public string Code { get; set; }
+        public int ID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }

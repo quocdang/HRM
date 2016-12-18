@@ -53,7 +53,7 @@ namespace DTO
         [StringLength(100)]
         public string Education { get; set; }
 
-        [StringLength(100)]
+        [StringLength(10)]
         public string Job { get; set; }
 
         [StringLength(255)]

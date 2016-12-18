@@ -9,9 +9,7 @@ namespace DTO
     [Table("ALLOWANCE")]
     public partial class ALLOWANCE
     {
-        [Key]
-        [StringLength(20)]
-        public string Code { get; set; }
+        public int ID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }

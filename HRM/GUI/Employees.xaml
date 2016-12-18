@@ -17,7 +17,7 @@
     <!--ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="1000" Height="500"-->
     <ScrollViewer>
         <Grid>
-        <DataGrid x:Name="LstEmployee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="550" CanUserAddRows="True" AutoGenerateColumns="False" Loaded="LstEmployee_Loaded">
+        <DataGrid x:Name="LstEmployee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="550" CanUserAddRows="True" AutoGenerateColumns="False" Loaded="LstEmployee_Loaded" SelectionChanged="LstEmployee_SelectionChanged" BeginningEdit="LstEmployee_BeginningEdit" AddingNewItem="LstEmployee_AddingNewItem" RowEditEnding="LstEmployee_RowEditEnding">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Save"></MenuItem>

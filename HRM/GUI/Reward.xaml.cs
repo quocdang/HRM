@@ -98,7 +98,6 @@ namespace HRM.GUI
                 var DecideDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
 
                 REWARD _Reward = new REWARD();
-                _Reward.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
                 _Reward.RewardName = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
                 _Reward.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
                 _Reward.DecideNum = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;

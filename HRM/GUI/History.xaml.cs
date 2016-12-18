@@ -94,16 +94,15 @@ namespace HRM.GUI
 
             foreach (var item in row_list)
             {
-                var FromDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
-                var ToDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+                var FromDate = (Grid.Columns[1].GetCellContent(item) as ContentPresenter);
+                var ToDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
                 HISTORY _History = new HISTORY();
-                _History.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
-                _History.Place = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
-                _History.Position = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
-                _History.Reason = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
+                _History.Place = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                _History.Position = (Grid.Columns[4].GetCellContent(item) as TextBlock).Text;
+                _History.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
                 _History.ToDate = (ToDate.ContentTemplate.FindName("ToDate", ToDate) as DatePicker).SelectedDate;
                 _History.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
-                _History.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                _History.EmployeeID = (Grid.Columns[0].GetCellContent(item) as ComboBox).SelectedValue.ToString();
                 BUS.BUS.InsertHistory(_History);
                 Grid.ItemsSource = BUS.BUS.ListHistory();
             }

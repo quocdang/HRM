@@ -115,22 +115,27 @@ namespace HRM.GUI
                 var dateofbirth = (Grid.Columns[5].GetCellContent(item) as ContentPresenter);
                 CANDIDATE _Candicate = new CANDIDATE();
                 _Candicate.CandidateCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Birthday = (dateofbirth.ContentTemplate.FindName("DateBirth", dateofbirth) as DatePicker).SelectedDate;
-                _Candicate.BirthPlace = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
-                _Candicate.CellPhone = (Grid.Columns[9].GetCellContent(item) as TextBlock).Text;
-                _Candicate.ContactAddress = (Grid.Columns[8].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Education = (Grid.Columns[13].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Email = (Grid.Columns[11].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Experience = (Grid.Columns[15].GetCellContent(item) as TextBlock).Text;
-                _Candicate.FirstName = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Gender = (bool)(Grid.Columns[4].GetCellContent(item) as ComboBox).SelectedValue;
-                _Candicate.HomePhone = (Grid.Columns[10].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Job = (Grid.Columns[14].GetCellContent(item) as TextBlock).Text;
-                _Candicate.Language = (Grid.Columns[12].GetCellContent(item) as TextBlock).Text;
-                _Candicate.LastName = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
-                _Candicate.MainAddress = (Grid.Columns[7].GetCellContent(item) as TextBlock).Text;
                 _Candicate.RecruitmentCode = (Grid.Columns[1].GetCellContent(item) as TextBlock).Text;
+                _Candicate.FirstName = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
+                _Candicate.LastName = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Gender = (bool)(Grid.Columns[4].GetCellContent(item) as ComboBox).SelectedValue;
+                _Candicate.Birthday = (dateofbirth.ContentTemplate.FindName("DateBirth", dateofbirth) as DatePicker).SelectedDate;
+
+                _Candicate.BirthPlace = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
+                _Candicate.MainAddress = (Grid.Columns[7].GetCellContent(item) as TextBlock).Text;
+                _Candicate.ContactAddress = (Grid.Columns[8].GetCellContent(item) as TextBlock).Text;
+
+                _Candicate.CellPhone = (Grid.Columns[9].GetCellContent(item) as TextBlock).Text;
+                _Candicate.HomePhone = (Grid.Columns[10].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Email = (Grid.Columns[11].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Language = (Grid.Columns[12].GetCellContent(item) as TextBlock).Text;
+
+                _Candicate.Education = (Grid.Columns[13].GetCellContent(item) as TextBlock).Text;
+                _Candicate.Job = (Grid.Columns[14].GetCellContent(item) as ComboBox).SelectedValue.ToString();
                 //_Candicate.Photo = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+
+                _Candicate.Experience = (Grid.Columns[15].GetCellContent(item) as TextBlock).Text;
+                _Candicate.ExpectSalary = int.Parse((Grid.Columns[16].GetCellContent(item) as TextBlock).Text);
                 _Candicate.ExpectSalary = decimal.Parse((Grid.Columns[16].GetCellContent(item) as TextBlock).Text);
                 BUS.BUS.InsertCandicate(_Candicate);
                 Grid.ItemsSource = BUS.BUS.ListCandicate();

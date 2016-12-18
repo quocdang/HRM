@@ -98,7 +98,6 @@ namespace HRM.GUI
                 var FromDate = (Grid.Columns[2].GetCellContent(item) as ContentPresenter);
                 var ToDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
                 WORKING _work = new WORKING();
-                _work.ID = int.Parse((Grid.Columns[0].GetCellContent(item) as TextBlock).Text);
                 _work.Reason = (Grid.Columns[5].GetCellContent(item) as TextBlock).Text;
                 _work.DecideNum = (Grid.Columns[6].GetCellContent(item) as TextBlock).Text;
                 _work.FromDate = (FromDate.ContentTemplate.FindName("FromDate", FromDate) as DatePicker).SelectedDate;
