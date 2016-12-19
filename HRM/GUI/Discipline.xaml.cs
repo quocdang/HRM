@@ -23,13 +23,15 @@ namespace HRM.GUI
     /// </summary>
     public partial class Discipline : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
+        List<DISCIPLINE> LstItemChange;
+        DISCIPLINE NewRow;
         public Discipline()
         {
             InitializeComponent();
-            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListDiscipline());
             Grid.ItemsSource = collectionView;
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+            LstItemChange = new List<DISCIPLINE>();
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,16 +93,15 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-            foreach (var item in row_list)
+            foreach (var item in LstItemChange)
             {
-                var Date = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+                //var Date = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
 
-                DISCIPLINE _Discipline = new DISCIPLINE();
-                _Discipline.Date = (Date.ContentTemplate.FindName("Date", Date) as DatePicker).SelectedDate;
-                _Discipline.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
-                _Discipline.Descr = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
-                BUS.BUS.InsertDiscipline(_Discipline);
+                //DISCIPLINE _Discipline = new DISCIPLINE();
+                //_Discipline.Date = (Date.ContentTemplate.FindName("Date", Date) as DatePicker).SelectedDate;
+                //_Discipline.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                //_Discipline.Descr = (Grid.Columns[2].GetCellContent(item) as TextBlock).Text;
+                BUS.BUS.InsertDiscipline(item);
                 Grid.ItemsSource = BUS.BUS.ListDiscipline();
             }
         }
@@ -118,5 +119,52 @@ namespace HRM.GUI
         }
 
         #endregion
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            //FrameworkElement element = Grid.Columns[6].GetCellContent(e.Row);
+            //if (element.GetType() == typeof(CheckBox))
+            //{
+            //    if (((CheckBox)element).IsChecked == true)
+            //    {
+            //        HISTORY Item = Grid.SelectedItem as HISTORY;
+            //        LstItemChange.Add(Item.ID);
+            //    }
+            //}
+            //HISTORY Item = Grid.SelectedItem as HISTORY;
+            LstItemChange.Add(NewRow);
+
+        }
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as DISCIPLINE;
+            FrameworkElement EmpID = Grid.Columns[0].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)EmpID).SelectedValue.ToString();
+                NewRow.EmployeeID = eno;
+            }
+            FrameworkElement Descr = Grid.Columns[1].GetCellContent(e.Row);
+            if (Descr.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Descr).Text;
+                NewRow.Descr = eno;
+            }
+            FrameworkElement Date = Grid.Columns[2].GetCellContent(e.Row);
+            if (Date.GetType() == typeof(ContentPresenter))
+            {
+                var _Date = ((ContentPresenter)Date);
+                if ((_Date.ContentTemplate.FindName("Date", _Date) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.Date = (_Date.ContentTemplate.FindName("Date", _Date) as DatePicker).SelectedDate;
+                }
+
+            }
+            
+
+
+
+        }
+
     }
 }

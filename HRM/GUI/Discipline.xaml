@@ -17,9 +17,10 @@
 
         <Grid>
             <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000"
-                      CanUserAddRows="True" AutoGenerateColumns="False">
+                      CanUserAddRows="True" AutoGenerateColumns="False" CellEditEnding="Grid_CellEditEnding" RowEditEnding="Grid_RowEditEnding">
                 <DataGrid.Columns>
-                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
+                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" 
+                                            DisplayMemberPath="LastName" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Descr}"  Header="Mô Tả" Width="200"/>
                     <DataGridTemplateColumn Header="Ngày Vi Phạm">
                         <DataGridTemplateColumn.CellTemplate>

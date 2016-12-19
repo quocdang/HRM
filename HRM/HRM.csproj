@@ -205,11 +205,6 @@
     <Compile Include="GUI\Working.xaml.cs">
       <DependentUpon>Working.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HRMDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HRMDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -228,6 +223,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NameOfDataSource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NameOfDataSource.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -241,21 +241,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="GUI\Report1.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\ReportSalary.rdlc" />
-    <None Include="HRMDataSet.xsc">
-      <DependentUpon>HRMDataSet.xsd</DependentUpon>
+    <None Include="NameOfDataSource.xsc">
+      <DependentUpon>NameOfDataSource.xsd</DependentUpon>
     </None>
-    <None Include="HRMDataSet.xsd">
+    <None Include="NameOfDataSource.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HRMDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>NameOfDataSource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="HRMDataSet.xss">
-      <DependentUpon>HRMDataSet.xsd</DependentUpon>
+    <None Include="NameOfDataSource.xss">
+      <DependentUpon>NameOfDataSource.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -287,7 +287,9 @@
       <Name>StyleWindow</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Report\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

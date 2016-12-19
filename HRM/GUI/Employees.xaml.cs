@@ -25,12 +25,12 @@ namespace HRM
     public partial class Employees : UserControl,WPFTabbedMDI
     {
         public EMPLOYEE NewRow;
-        public List<EMPLOYEE> LstEmp;
+        public List<EMPLOYEE> LstItemChange;
         public Employees()
         {
             InitializeComponent();
-            
 
+            LstItemChange = new List<EMPLOYEE>();
         }
         public class GenderS
         {
@@ -109,7 +109,7 @@ namespace HRM
         /// </summary>
         public void Save()
         {
-            foreach (EMPLOYEE item in LstEmp)
+            foreach (EMPLOYEE item in LstItemChange)
             {
                 //var dateofbirth = (LstEmployee.Columns[3].GetCellContent(item) as ContentPresenter);
                 //EMPLOYEE emp = new EMPLOYEE();
@@ -158,7 +158,7 @@ namespace HRM
 
         private void LstEmployee_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            LstEmp.Add(NewRow);
+            LstItemChange.Add(NewRow);
         }
 
         private void LstEmployee_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

@@ -20,17 +20,17 @@ namespace HRM {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("HRMDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("NameOfDataSource")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class HRMDataSet : global::System.Data.DataSet {
+    public partial class NameOfDataSource : global::System.Data.DataSet {
         
-        private SALARYDataTable tableSALARY;
+        private CONTRACTDataTable tableCONTRACT;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public HRMDataSet() {
+        public NameOfDataSource() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace HRM {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected HRMDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected NameOfDataSource(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace HRM {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["SALARY"] != null)) {
-                    base.Tables.Add(new SALARYDataTable(ds.Tables["SALARY"]));
+                if ((ds.Tables["CONTRACT"] != null)) {
+                    base.Tables.Add(new CONTRACTDataTable(ds.Tables["CONTRACT"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace HRM {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SALARYDataTable SALARY {
+        public CONTRACTDataTable CONTRACT {
             get {
-                return this.tableSALARY;
+                return this.tableCONTRACT;
             }
         }
         
@@ -127,7 +127,7 @@ namespace HRM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            HRMDataSet cln = ((HRMDataSet)(base.Clone()));
+            NameOfDataSource cln = ((NameOfDataSource)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace HRM {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["SALARY"] != null)) {
-                    base.Tables.Add(new SALARYDataTable(ds.Tables["SALARY"]));
+                if ((ds.Tables["CONTRACT"] != null)) {
+                    base.Tables.Add(new CONTRACTDataTable(ds.Tables["CONTRACT"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace HRM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSALARY = ((SALARYDataTable)(base.Tables["SALARY"]));
+            this.tableCONTRACT = ((CONTRACTDataTable)(base.Tables["CONTRACT"]));
             if ((initTable == true)) {
-                if ((this.tableSALARY != null)) {
-                    this.tableSALARY.InitVars();
+                if ((this.tableCONTRACT != null)) {
+                    this.tableCONTRACT.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace HRM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "HRMDataSet";
+            this.DataSetName = "NameOfDataSource";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/HRMDataSet.xsd";
+            this.Namespace = "http://tempuri.org/NameOfDataSource.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSALARY = new SALARYDataTable();
-            base.Tables.Add(this.tableSALARY);
+            this.tableCONTRACT = new CONTRACTDataTable();
+            base.Tables.Add(this.tableCONTRACT);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSALARY() {
+        private bool ShouldSerializeCONTRACT() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace HRM {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            HRMDataSet ds = new HRMDataSet();
+            NameOfDataSource ds = new NameOfDataSource();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,31 +270,35 @@ namespace HRM {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SALARYRowChangeEventHandler(object sender, SALARYRowChangeEvent e);
+        public delegate void CONTRACTRowChangeEventHandler(object sender, CONTRACTRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SALARYDataTable : global::System.Data.TypedTableBase<SALARYRow> {
+        public partial class CONTRACTDataTable : global::System.Data.TypedTableBase<CONTRACTRow> {
             
-            private global::System.Data.DataColumn columnID;
+            private global::System.Data.DataColumn columnContractCode;
+            
+            private global::System.Data.DataColumn columnContractType;
             
             private global::System.Data.DataColumn columnEmployeeID;
             
-            private global::System.Data.DataColumn columnWorkDays;
+            private global::System.Data.DataColumn columnFromDate;
             
-            private global::System.Data.DataColumn columnAllowance;
+            private global::System.Data.DataColumn columnToDate;
             
-            private global::System.Data.DataColumn columnDeducttion;
+            private global::System.Data.DataColumn columnSalary;
             
-            private global::System.Data.DataColumn columnRealSalary;
+            private global::System.Data.DataColumn columnSignDate;
+            
+            private global::System.Data.DataColumn columnValidDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYDataTable() {
-                this.TableName = "SALARY";
+            public CONTRACTDataTable() {
+                this.TableName = "CONTRACT";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +306,7 @@ namespace HRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SALARYDataTable(global::System.Data.DataTable table) {
+            internal CONTRACTDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,16 +323,24 @@ namespace HRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SALARYDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CONTRACTDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
+            public global::System.Data.DataColumn ContractCodeColumn {
                 get {
-                    return this.columnID;
+                    return this.columnContractCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ContractTypeColumn {
+                get {
+                    return this.columnContractType;
                 }
             }
             
@@ -342,33 +354,41 @@ namespace HRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn WorkDaysColumn {
+            public global::System.Data.DataColumn FromDateColumn {
                 get {
-                    return this.columnWorkDays;
+                    return this.columnFromDate;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AllowanceColumn {
+            public global::System.Data.DataColumn ToDateColumn {
                 get {
-                    return this.columnAllowance;
+                    return this.columnToDate;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DeducttionColumn {
+            public global::System.Data.DataColumn SalaryColumn {
                 get {
-                    return this.columnDeducttion;
+                    return this.columnSalary;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RealSalaryColumn {
+            public global::System.Data.DataColumn SignDateColumn {
                 get {
-                    return this.columnRealSalary;
+                    return this.columnSignDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ValidDateColumn {
+                get {
+                    return this.columnValidDate;
                 }
             }
             
@@ -383,57 +403,59 @@ namespace HRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRow this[int index] {
+            public CONTRACTRow this[int index] {
                 get {
-                    return ((SALARYRow)(this.Rows[index]));
+                    return ((CONTRACTRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SALARYRowChangeEventHandler SALARYRowChanging;
+            public event CONTRACTRowChangeEventHandler CONTRACTRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SALARYRowChangeEventHandler SALARYRowChanged;
+            public event CONTRACTRowChangeEventHandler CONTRACTRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SALARYRowChangeEventHandler SALARYRowDeleting;
+            public event CONTRACTRowChangeEventHandler CONTRACTRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SALARYRowChangeEventHandler SALARYRowDeleted;
+            public event CONTRACTRowChangeEventHandler CONTRACTRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSALARYRow(SALARYRow row) {
+            public void AddCONTRACTRow(CONTRACTRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRow AddSALARYRow(string ID, string EmployeeID, int WorkDays, string Allowance, string Deducttion, decimal RealSalary) {
-                SALARYRow rowSALARYRow = ((SALARYRow)(this.NewRow()));
+            public CONTRACTRow AddCONTRACTRow(string ContractCode, int ContractType, string EmployeeID, System.DateTime FromDate, System.DateTime ToDate, decimal Salary, System.DateTime SignDate, System.DateTime ValidDate) {
+                CONTRACTRow rowCONTRACTRow = ((CONTRACTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        ContractCode,
+                        ContractType,
                         EmployeeID,
-                        WorkDays,
-                        Allowance,
-                        Deducttion,
-                        RealSalary};
-                rowSALARYRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSALARYRow);
-                return rowSALARYRow;
+                        FromDate,
+                        ToDate,
+                        Salary,
+                        SignDate,
+                        ValidDate};
+                rowCONTRACTRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCONTRACTRow);
+                return rowCONTRACTRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRow FindByID(string ID) {
-                return ((SALARYRow)(this.Rows.Find(new object[] {
-                            ID})));
+            public CONTRACTRow FindByContractCode(string ContractCode) {
+                return ((CONTRACTRow)(this.Rows.Find(new object[] {
+                            ContractCode})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SALARYDataTable cln = ((SALARYDataTable)(base.Clone()));
+                CONTRACTDataTable cln = ((CONTRACTDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -441,69 +463,73 @@ namespace HRM {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SALARYDataTable();
+                return new CONTRACTDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
+                this.columnContractCode = base.Columns["ContractCode"];
+                this.columnContractType = base.Columns["ContractType"];
                 this.columnEmployeeID = base.Columns["EmployeeID"];
-                this.columnWorkDays = base.Columns["WorkDays"];
-                this.columnAllowance = base.Columns["Allowance"];
-                this.columnDeducttion = base.Columns["Deducttion"];
-                this.columnRealSalary = base.Columns["RealSalary"];
+                this.columnFromDate = base.Columns["FromDate"];
+                this.columnToDate = base.Columns["ToDate"];
+                this.columnSalary = base.Columns["Salary"];
+                this.columnSignDate = base.Columns["SignDate"];
+                this.columnValidDate = base.Columns["ValidDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
+                this.columnContractCode = new global::System.Data.DataColumn("ContractCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContractCode);
+                this.columnContractType = new global::System.Data.DataColumn("ContractType", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContractType);
                 this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmployeeID);
-                this.columnWorkDays = new global::System.Data.DataColumn("WorkDays", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWorkDays);
-                this.columnAllowance = new global::System.Data.DataColumn("Allowance", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAllowance);
-                this.columnDeducttion = new global::System.Data.DataColumn("Deducttion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeducttion);
-                this.columnRealSalary = new global::System.Data.DataColumn("RealSalary", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRealSalary);
+                this.columnFromDate = new global::System.Data.DataColumn("FromDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromDate);
+                this.columnToDate = new global::System.Data.DataColumn("ToDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToDate);
+                this.columnSalary = new global::System.Data.DataColumn("Salary", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalary);
+                this.columnSignDate = new global::System.Data.DataColumn("SignDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSignDate);
+                this.columnValidDate = new global::System.Data.DataColumn("ValidDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValidDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
-                this.columnID.MaxLength = 10;
+                                this.columnContractCode}, true));
+                this.columnContractCode.AllowDBNull = false;
+                this.columnContractCode.Unique = true;
+                this.columnContractCode.MaxLength = 20;
                 this.columnEmployeeID.MaxLength = 20;
-                this.columnAllowance.MaxLength = 10;
-                this.columnDeducttion.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRow NewSALARYRow() {
-                return ((SALARYRow)(this.NewRow()));
+            public CONTRACTRow NewCONTRACTRow() {
+                return ((CONTRACTRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SALARYRow(builder);
+                return new CONTRACTRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SALARYRow);
+                return typeof(CONTRACTRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SALARYRowChanged != null)) {
-                    this.SALARYRowChanged(this, new SALARYRowChangeEvent(((SALARYRow)(e.Row)), e.Action));
+                if ((this.CONTRACTRowChanged != null)) {
+                    this.CONTRACTRowChanged(this, new CONTRACTRowChangeEvent(((CONTRACTRow)(e.Row)), e.Action));
                 }
             }
             
@@ -511,8 +537,8 @@ namespace HRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SALARYRowChanging != null)) {
-                    this.SALARYRowChanging(this, new SALARYRowChangeEvent(((SALARYRow)(e.Row)), e.Action));
+                if ((this.CONTRACTRowChanging != null)) {
+                    this.CONTRACTRowChanging(this, new CONTRACTRowChangeEvent(((CONTRACTRow)(e.Row)), e.Action));
                 }
             }
             
@@ -520,8 +546,8 @@ namespace HRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SALARYRowDeleted != null)) {
-                    this.SALARYRowDeleted(this, new SALARYRowChangeEvent(((SALARYRow)(e.Row)), e.Action));
+                if ((this.CONTRACTRowDeleted != null)) {
+                    this.CONTRACTRowDeleted(this, new CONTRACTRowChangeEvent(((CONTRACTRow)(e.Row)), e.Action));
                 }
             }
             
@@ -529,14 +555,14 @@ namespace HRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SALARYRowDeleting != null)) {
-                    this.SALARYRowDeleting(this, new SALARYRowChangeEvent(((SALARYRow)(e.Row)), e.Action));
+                if ((this.CONTRACTRowDeleting != null)) {
+                    this.CONTRACTRowDeleting(this, new CONTRACTRowChangeEvent(((CONTRACTRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSALARYRow(SALARYRow row) {
+            public void RemoveCONTRACTRow(CONTRACTRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -545,7 +571,7 @@ namespace HRM {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HRMDataSet ds = new HRMDataSet();
+                NameOfDataSource ds = new NameOfDataSource();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -563,7 +589,7 @@ namespace HRM {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SALARYDataTable";
+                attribute2.FixedValue = "CONTRACTDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -607,25 +633,41 @@ namespace HRM {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SALARYRow : global::System.Data.DataRow {
+        public partial class CONTRACTRow : global::System.Data.DataRow {
             
-            private SALARYDataTable tableSALARY;
+            private CONTRACTDataTable tableCONTRACT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SALARYRow(global::System.Data.DataRowBuilder rb) : 
+            internal CONTRACTRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSALARY = ((SALARYDataTable)(this.Table));
+                this.tableCONTRACT = ((CONTRACTDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public string ContractCode {
                 get {
-                    return ((string)(this[this.tableSALARY.IDColumn]));
+                    return ((string)(this[this.tableCONTRACT.ContractCodeColumn]));
                 }
                 set {
-                    this[this.tableSALARY.IDColumn] = value;
+                    this[this.tableCONTRACT.ContractCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ContractType {
+                get {
+                    try {
+                        return ((int)(this[this.tableCONTRACT.ContractTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ContractType\' in table \'CONTRACT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTRACT.ContractTypeColumn] = value;
                 }
             }
             
@@ -634,139 +676,179 @@ namespace HRM {
             public string EmployeeID {
                 get {
                     try {
-                        return ((string)(this[this.tableSALARY.EmployeeIDColumn]));
+                        return ((string)(this[this.tableCONTRACT.EmployeeIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EmployeeID\' in table \'SALARY\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EmployeeID\' in table \'CONTRACT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSALARY.EmployeeIDColumn] = value;
+                    this[this.tableCONTRACT.EmployeeIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int WorkDays {
+            public System.DateTime FromDate {
                 get {
                     try {
-                        return ((int)(this[this.tableSALARY.WorkDaysColumn]));
+                        return ((global::System.DateTime)(this[this.tableCONTRACT.FromDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'WorkDays\' in table \'SALARY\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FromDate\' in table \'CONTRACT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSALARY.WorkDaysColumn] = value;
+                    this[this.tableCONTRACT.FromDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Allowance {
+            public System.DateTime ToDate {
                 get {
                     try {
-                        return ((string)(this[this.tableSALARY.AllowanceColumn]));
+                        return ((global::System.DateTime)(this[this.tableCONTRACT.ToDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Allowance\' in table \'SALARY\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ToDate\' in table \'CONTRACT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSALARY.AllowanceColumn] = value;
+                    this[this.tableCONTRACT.ToDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Deducttion {
+            public decimal Salary {
                 get {
                     try {
-                        return ((string)(this[this.tableSALARY.DeducttionColumn]));
+                        return ((decimal)(this[this.tableCONTRACT.SalaryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Deducttion\' in table \'SALARY\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Salary\' in table \'CONTRACT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSALARY.DeducttionColumn] = value;
+                    this[this.tableCONTRACT.SalaryColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal RealSalary {
+            public System.DateTime SignDate {
                 get {
                     try {
-                        return ((decimal)(this[this.tableSALARY.RealSalaryColumn]));
+                        return ((global::System.DateTime)(this[this.tableCONTRACT.SignDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RealSalary\' in table \'SALARY\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SignDate\' in table \'CONTRACT\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSALARY.RealSalaryColumn] = value;
+                    this[this.tableCONTRACT.SignDateColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime ValidDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCONTRACT.ValidDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValidDate\' in table \'CONTRACT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTRACT.ValidDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContractTypeNull() {
+                return this.IsNull(this.tableCONTRACT.ContractTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContractTypeNull() {
+                this[this.tableCONTRACT.ContractTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEmployeeIDNull() {
-                return this.IsNull(this.tableSALARY.EmployeeIDColumn);
+                return this.IsNull(this.tableCONTRACT.EmployeeIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEmployeeIDNull() {
-                this[this.tableSALARY.EmployeeIDColumn] = global::System.Convert.DBNull;
+                this[this.tableCONTRACT.EmployeeIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsWorkDaysNull() {
-                return this.IsNull(this.tableSALARY.WorkDaysColumn);
+            public bool IsFromDateNull() {
+                return this.IsNull(this.tableCONTRACT.FromDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetWorkDaysNull() {
-                this[this.tableSALARY.WorkDaysColumn] = global::System.Convert.DBNull;
+            public void SetFromDateNull() {
+                this[this.tableCONTRACT.FromDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAllowanceNull() {
-                return this.IsNull(this.tableSALARY.AllowanceColumn);
+            public bool IsToDateNull() {
+                return this.IsNull(this.tableCONTRACT.ToDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAllowanceNull() {
-                this[this.tableSALARY.AllowanceColumn] = global::System.Convert.DBNull;
+            public void SetToDateNull() {
+                this[this.tableCONTRACT.ToDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDeducttionNull() {
-                return this.IsNull(this.tableSALARY.DeducttionColumn);
+            public bool IsSalaryNull() {
+                return this.IsNull(this.tableCONTRACT.SalaryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDeducttionNull() {
-                this[this.tableSALARY.DeducttionColumn] = global::System.Convert.DBNull;
+            public void SetSalaryNull() {
+                this[this.tableCONTRACT.SalaryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRealSalaryNull() {
-                return this.IsNull(this.tableSALARY.RealSalaryColumn);
+            public bool IsSignDateNull() {
+                return this.IsNull(this.tableCONTRACT.SignDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRealSalaryNull() {
-                this[this.tableSALARY.RealSalaryColumn] = global::System.Convert.DBNull;
+            public void SetSignDateNull() {
+                this[this.tableCONTRACT.SignDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsValidDateNull() {
+                return this.IsNull(this.tableCONTRACT.ValidDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetValidDateNull() {
+                this[this.tableCONTRACT.ValidDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -774,22 +856,22 @@ namespace HRM {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SALARYRowChangeEvent : global::System.EventArgs {
+        public class CONTRACTRowChangeEvent : global::System.EventArgs {
             
-            private SALARYRow eventRow;
+            private CONTRACTRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRowChangeEvent(SALARYRow row, global::System.Data.DataRowAction action) {
+            public CONTRACTRowChangeEvent(CONTRACTRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SALARYRow Row {
+            public CONTRACTRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -805,7 +887,7 @@ namespace HRM {
         }
     }
 }
-namespace HRM.HRMDataSetTableAdapters {
+namespace HRM.NameOfDataSourceTableAdapters {
     
     
     /// <summary>
@@ -817,7 +899,7 @@ namespace HRM.HRMDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SALARYTableAdapter : global::System.ComponentModel.Component {
+    public partial class CONTRACTTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -831,7 +913,7 @@ namespace HRM.HRMDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SALARYTableAdapter() {
+        public CONTRACTTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -928,62 +1010,76 @@ namespace HRM.HRMDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SALARY";
-            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.DataSetTable = "CONTRACT";
+            tableMapping.ColumnMappings.Add("ContractCode", "ContractCode");
+            tableMapping.ColumnMappings.Add("ContractType", "ContractType");
             tableMapping.ColumnMappings.Add("EmployeeID", "EmployeeID");
-            tableMapping.ColumnMappings.Add("WorkDays", "WorkDays");
-            tableMapping.ColumnMappings.Add("Allowance", "Allowance");
-            tableMapping.ColumnMappings.Add("Deducttion", "Deducttion");
-            tableMapping.ColumnMappings.Add("RealSalary", "RealSalary");
+            tableMapping.ColumnMappings.Add("FromDate", "FromDate");
+            tableMapping.ColumnMappings.Add("ToDate", "ToDate");
+            tableMapping.ColumnMappings.Add("Salary", "Salary");
+            tableMapping.ColumnMappings.Add("SignDate", "SignDate");
+            tableMapping.ColumnMappings.Add("ValidDate", "ValidDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[SALARY] WHERE (([ID] = @Original_ID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_WorkDays = 1 AND [WorkDays] IS NULL) OR ([WorkDays] = @Original_WorkDays)) AND ((@IsNull_Allowance = 1 AND [Allowance] IS NULL) OR ([Allowance] = @Original_Allowance)) AND ((@IsNull_Deducttion = 1 AND [Deducttion] IS NULL) OR ([Deducttion] = @Original_Deducttion)) AND ((@IsNull_RealSalary = 1 AND [RealSalary] IS NULL) OR ([RealSalary] = @Original_RealSalary)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[CONTRACT] WHERE (([ContractCode] = @Original_ContractCode) AND ((@IsNull_ContractType = 1 AND [ContractType] IS NULL) OR ([ContractType] = @Original_ContractType)) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_FromDate = 1 AND [FromDate] IS NULL) OR ([FromDate] = @Original_FromDate)) AND ((@IsNull_ToDate = 1 AND [ToDate] IS NULL) OR ([ToDate] = @Original_ToDate)) AND ((@IsNull_Salary = 1 AND [Salary] IS NULL) OR ([Salary] = @Original_Salary)) AND ((@IsNull_SignDate = 1 AND [SignDate] IS NULL) OR ([SignDate] = @Original_SignDate)) AND ((@IsNull_ValidDate = 1 AND [ValidDate] IS NULL) OR ([ValidDate] = @Original_ValidDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Allowance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Allowance", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Deducttion", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deducttion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RealSalary", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealSalary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ToDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Salary", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Salary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SignDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SignDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ValidDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValidDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[SALARY] ([ID], [EmployeeID], [WorkDays], [Allowance], [Deducttion], [RealSalary]) VALUES (@ID, @EmployeeID, @WorkDays, @Allowance, @Deducttion, @RealSalary);
-SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY WHERE (ID = @ID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CONTRACT] ([ContractCode], [ContractType], [EmployeeID], [FromDate], [ToDate], [Salary], [SignDate], [ValidDate]) VALUES (@ContractCode, @ContractType, @EmployeeID, @FromDate, @ToDate, @Salary, @SignDate, @ValidDate);
+SELECT ContractCode, ContractType, EmployeeID, FromDate, ToDate, Salary, SignDate, ValidDate FROM CONTRACT WHERE (ContractCode = @ContractCode)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Allowance", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deducttion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealSalary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Salary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SignDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValidDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SALARY] SET [ID] = @ID, [EmployeeID] = @EmployeeID, [WorkDays] = @WorkDays, [Allowance] = @Allowance, [Deducttion] = @Deducttion, [RealSalary] = @RealSalary WHERE (([ID] = @Original_ID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_WorkDays = 1 AND [WorkDays] IS NULL) OR ([WorkDays] = @Original_WorkDays)) AND ((@IsNull_Allowance = 1 AND [Allowance] IS NULL) OR ([Allowance] = @Original_Allowance)) AND ((@IsNull_Deducttion = 1 AND [Deducttion] IS NULL) OR ([Deducttion] = @Original_Deducttion)) AND ((@IsNull_RealSalary = 1 AND [RealSalary] IS NULL) OR ([RealSalary] = @Original_RealSalary)));
-SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[CONTRACT] SET [ContractCode] = @ContractCode, [ContractType] = @ContractType, [EmployeeID] = @EmployeeID, [FromDate] = @FromDate, [ToDate] = @ToDate, [Salary] = @Salary, [SignDate] = @SignDate, [ValidDate] = @ValidDate WHERE (([ContractCode] = @Original_ContractCode) AND ((@IsNull_ContractType = 1 AND [ContractType] IS NULL) OR ([ContractType] = @Original_ContractType)) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_FromDate = 1 AND [FromDate] IS NULL) OR ([FromDate] = @Original_FromDate)) AND ((@IsNull_ToDate = 1 AND [ToDate] IS NULL) OR ([ToDate] = @Original_ToDate)) AND ((@IsNull_Salary = 1 AND [Salary] IS NULL) OR ([Salary] = @Original_Salary)) AND ((@IsNull_SignDate = 1 AND [SignDate] IS NULL) OR ([SignDate] = @Original_SignDate)) AND ((@IsNull_ValidDate = 1 AND [ValidDate] IS NULL) OR ([ValidDate] = @Original_ValidDate)));
+SELECT ContractCode, ContractType, EmployeeID, FromDate, ToDate, Salary, SignDate, ValidDate FROM CONTRACT WHERE (ContractCode = @ContractCode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Allowance", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deducttion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealSalary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Salary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SignDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValidDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_WorkDays", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WorkDays", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Allowance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Allowance", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Allowance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Deducttion", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deducttion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deducttion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RealSalary", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealSalary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealSalary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ToDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Salary", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Salary", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Salary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SignDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SignDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SignDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ValidDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValidDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValidDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -999,8 +1095,8 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM dbo.SALAR" +
-                "Y";
+            this._commandCollection[0].CommandText = "SELECT ContractCode, ContractType, EmployeeID, FromDate, ToDate, Salary, SignDate" +
+                ", ValidDate FROM dbo.CONTRACT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1008,7 +1104,7 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HRMDataSet.SALARYDataTable dataTable) {
+        public virtual int Fill(NameOfDataSource.CONTRACTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1021,9 +1117,9 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HRMDataSet.SALARYDataTable GetData() {
+        public virtual NameOfDataSource.CONTRACTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            HRMDataSet.SALARYDataTable dataTable = new HRMDataSet.SALARYDataTable();
+            NameOfDataSource.CONTRACTDataTable dataTable = new NameOfDataSource.CONTRACTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1031,15 +1127,15 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HRMDataSet.SALARYDataTable dataTable) {
+        public virtual int Update(NameOfDataSource.CONTRACTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HRMDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "SALARY");
+        public virtual int Update(NameOfDataSource dataSet) {
+            return this.Adapter.Update(dataSet, "CONTRACT");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1061,52 +1157,68 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID, string Original_EmployeeID, global::System.Nullable<int> Original_WorkDays, string Original_Allowance, string Original_Deducttion, global::System.Nullable<decimal> Original_RealSalary) {
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
+        public virtual int Delete(string Original_ContractCode, global::System.Nullable<int> Original_ContractType, string Original_EmployeeID, global::System.Nullable<global::System.DateTime> Original_FromDate, global::System.Nullable<global::System.DateTime> Original_ToDate, global::System.Nullable<decimal> Original_Salary, global::System.Nullable<global::System.DateTime> Original_SignDate, global::System.Nullable<global::System.DateTime> Original_ValidDate) {
+            if ((Original_ContractCode == null)) {
+                throw new global::System.ArgumentNullException("Original_ContractCode");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ID));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ContractCode));
             }
-            if ((Original_EmployeeID == null)) {
+            if ((Original_ContractType.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ContractType.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_EmployeeID));
-            }
-            if ((Original_WorkDays.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_WorkDays.Value));
-            }
-            else {
+            if ((Original_EmployeeID == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Allowance == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_EmployeeID));
+            }
+            if ((Original_FromDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_FromDate.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Allowance));
+            if ((Original_ToDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_ToDate.Value));
             }
-            if ((Original_Deducttion == null)) {
+            else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Deducttion));
-            }
-            if ((Original_RealSalary.HasValue == true)) {
+            if ((Original_Salary.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_RealSalary.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_Salary.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SignDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(Original_SignDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ValidDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((System.DateTime)(Original_ValidDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1128,42 +1240,54 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID, string EmployeeID, global::System.Nullable<int> WorkDays, string Allowance, string Deducttion, global::System.Nullable<decimal> RealSalary) {
-            if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
+        public virtual int Insert(string ContractCode, global::System.Nullable<int> ContractType, string EmployeeID, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate, global::System.Nullable<decimal> Salary, global::System.Nullable<global::System.DateTime> SignDate, global::System.Nullable<global::System.DateTime> ValidDate) {
+            if ((ContractCode == null)) {
+                throw new global::System.ArgumentNullException("ContractCode");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ContractCode));
             }
-            if ((EmployeeID == null)) {
+            if ((ContractType.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ContractType.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(EmployeeID));
-            }
-            if ((WorkDays.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(WorkDays.Value));
-            }
-            else {
+            if ((EmployeeID == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Allowance == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(EmployeeID));
+            }
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Allowance));
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(ToDate.Value));
             }
-            if ((Deducttion == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Deducttion));
-            }
-            if ((RealSalary.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(RealSalary.Value));
+            if ((Salary.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Salary.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((SignDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(SignDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((ValidDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(ValidDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1185,88 +1309,132 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ID, string EmployeeID, global::System.Nullable<int> WorkDays, string Allowance, string Deducttion, global::System.Nullable<decimal> RealSalary, string Original_ID, string Original_EmployeeID, global::System.Nullable<int> Original_WorkDays, string Original_Allowance, string Original_Deducttion, global::System.Nullable<decimal> Original_RealSalary) {
-            if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
+        public virtual int Update(
+                    string ContractCode, 
+                    global::System.Nullable<int> ContractType, 
+                    string EmployeeID, 
+                    global::System.Nullable<global::System.DateTime> FromDate, 
+                    global::System.Nullable<global::System.DateTime> ToDate, 
+                    global::System.Nullable<decimal> Salary, 
+                    global::System.Nullable<global::System.DateTime> SignDate, 
+                    global::System.Nullable<global::System.DateTime> ValidDate, 
+                    string Original_ContractCode, 
+                    global::System.Nullable<int> Original_ContractType, 
+                    string Original_EmployeeID, 
+                    global::System.Nullable<global::System.DateTime> Original_FromDate, 
+                    global::System.Nullable<global::System.DateTime> Original_ToDate, 
+                    global::System.Nullable<decimal> Original_Salary, 
+                    global::System.Nullable<global::System.DateTime> Original_SignDate, 
+                    global::System.Nullable<global::System.DateTime> Original_ValidDate) {
+            if ((ContractCode == null)) {
+                throw new global::System.ArgumentNullException("ContractCode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ID));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ContractCode));
             }
-            if ((EmployeeID == null)) {
+            if ((ContractType.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ContractType.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(EmployeeID));
-            }
-            if ((WorkDays.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(WorkDays.Value));
-            }
-            else {
+            if ((EmployeeID == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Allowance == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(EmployeeID));
+            }
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Allowance));
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(ToDate.Value));
             }
-            if ((Deducttion == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Deducttion));
-            }
-            if ((RealSalary.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(RealSalary.Value));
+            if ((Salary.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Salary.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
+            if ((SignDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(SignDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ID));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_EmployeeID == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((ValidDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(ValidDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_EmployeeID));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_WorkDays.HasValue == true)) {
+            if ((Original_ContractCode == null)) {
+                throw new global::System.ArgumentNullException("Original_ContractCode");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ContractCode));
+            }
+            if ((Original_ContractType.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_WorkDays.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ContractType.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_Allowance == null)) {
+            if ((Original_EmployeeID == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Allowance));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_EmployeeID));
             }
-            if ((Original_Deducttion == null)) {
+            if ((Original_FromDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_FromDate.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Deducttion));
-            }
-            if ((Original_RealSalary.HasValue == true)) {
+            if ((Original_ToDate.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(Original_RealSalary.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_ToDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Salary.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_Salary.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SignDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(Original_SignDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ValidDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((System.DateTime)(Original_ValidDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1288,8 +1456,8 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string EmployeeID, global::System.Nullable<int> WorkDays, string Allowance, string Deducttion, global::System.Nullable<decimal> RealSalary, string Original_ID, string Original_EmployeeID, global::System.Nullable<int> Original_WorkDays, string Original_Allowance, string Original_Deducttion, global::System.Nullable<decimal> Original_RealSalary) {
-            return this.Update(Original_ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary, Original_ID, Original_EmployeeID, Original_WorkDays, Original_Allowance, Original_Deducttion, Original_RealSalary);
+        public virtual int Update(global::System.Nullable<int> ContractType, string EmployeeID, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate, global::System.Nullable<decimal> Salary, global::System.Nullable<global::System.DateTime> SignDate, global::System.Nullable<global::System.DateTime> ValidDate, string Original_ContractCode, global::System.Nullable<int> Original_ContractType, string Original_EmployeeID, global::System.Nullable<global::System.DateTime> Original_FromDate, global::System.Nullable<global::System.DateTime> Original_ToDate, global::System.Nullable<decimal> Original_Salary, global::System.Nullable<global::System.DateTime> Original_SignDate, global::System.Nullable<global::System.DateTime> Original_ValidDate) {
+            return this.Update(Original_ContractCode, ContractType, EmployeeID, FromDate, ToDate, Salary, SignDate, ValidDate, Original_ContractCode, Original_ContractType, Original_EmployeeID, Original_FromDate, Original_ToDate, Original_Salary, Original_SignDate, Original_ValidDate);
         }
     }
     
@@ -1305,7 +1473,7 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         
         private UpdateOrderOption _updateOrder;
         
-        private SALARYTableAdapter _sALARYTableAdapter;
+        private CONTRACTTableAdapter _cONTRACTTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1327,12 +1495,12 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SALARYTableAdapter SALARYTableAdapter {
+        public CONTRACTTableAdapter CONTRACTTableAdapter {
             get {
-                return this._sALARYTableAdapter;
+                return this._cONTRACTTableAdapter;
             }
             set {
-                this._sALARYTableAdapter = value;
+                this._cONTRACTTableAdapter = value;
             }
         }
         
@@ -1355,9 +1523,9 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._sALARYTableAdapter != null) 
-                            && (this._sALARYTableAdapter.Connection != null))) {
-                    return this._sALARYTableAdapter.Connection;
+                if (((this._cONTRACTTableAdapter != null) 
+                            && (this._cONTRACTTableAdapter.Connection != null))) {
+                    return this._cONTRACTTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1372,7 +1540,7 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._sALARYTableAdapter != null)) {
+                if ((this._cONTRACTTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1384,14 +1552,14 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(HRMDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(NameOfDataSource dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._sALARYTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SALARY.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._cONTRACTTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.CONTRACT.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sALARYTableAdapter.Update(updatedRows));
+                    result = (result + this._cONTRACTTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1403,13 +1571,13 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(HRMDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(NameOfDataSource dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._sALARYTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SALARY.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._cONTRACTTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.CONTRACT.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sALARYTableAdapter.Update(addedRows));
+                    result = (result + this._cONTRACTTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1421,13 +1589,13 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(HRMDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(NameOfDataSource dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._sALARYTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SALARY.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._cONTRACTTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CONTRACT.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sALARYTableAdapter.Update(deletedRows));
+                    result = (result + this._cONTRACTTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1463,15 +1631,15 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(HRMDataSet dataSet) {
+        public virtual int UpdateAll(NameOfDataSource dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._sALARYTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sALARYTableAdapter.Connection) == false))) {
+            if (((this._cONTRACTTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._cONTRACTTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1507,13 +1675,13 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._sALARYTableAdapter != null)) {
-                    revertConnections.Add(this._sALARYTableAdapter, this._sALARYTableAdapter.Connection);
-                    this._sALARYTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._sALARYTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._sALARYTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sALARYTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sALARYTableAdapter.Adapter);
+                if ((this._cONTRACTTableAdapter != null)) {
+                    revertConnections.Add(this._cONTRACTTableAdapter, this._cONTRACTTableAdapter.Connection);
+                    this._cONTRACTTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._cONTRACTTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._cONTRACTTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._cONTRACTTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._cONTRACTTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1574,9 +1742,9 @@ SELECT ID, EmployeeID, WorkDays, Allowance, Deducttion, RealSalary FROM SALARY W
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._sALARYTableAdapter != null)) {
-                    this._sALARYTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sALARYTableAdapter]));
-                    this._sALARYTableAdapter.Transaction = null;
+                if ((this._cONTRACTTableAdapter != null)) {
+                    this._cONTRACTTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._cONTRACTTableAdapter]));
+                    this._cONTRACTTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

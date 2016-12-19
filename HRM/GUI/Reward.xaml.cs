@@ -23,12 +23,15 @@ namespace HRM.GUI
     /// </summary>
     public partial class Reward : UserControl, WPFTabbedMDI
     {
+        List<REWARD> LstItemChange;
+        REWARD NewRow;
         public Reward()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListReward());
             Grid.ItemsSource = collectionView;
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+            LstItemChange = new List<REWARD>();
 
         }
         #region ITabbedMDI Members
@@ -93,16 +96,18 @@ namespace HRM.GUI
         {
             var row_list = GetDataGridRows(Grid);
 
-            foreach (var item in row_list)
+            foreach (var item in LstItemChange)
             {
-                var DecideDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
+                //var DecideDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
 
-                REWARD _Reward = new REWARD();
-                _Reward.RewardName = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
-                _Reward.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
-                _Reward.DecideNum = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
-                _Reward.DecideDate = (DecideDate.ContentTemplate.FindName("DecideDate", DecideDate) as DatePicker).SelectedDate;
-                BUS.BUS.InsertReward(_Reward);
+                //REWARD _Reward = new REWARD();
+                //_Reward.RewardName = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                //_Reward.EmployeeID = (Grid.Columns[2].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                //_Reward.DecideNum = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                //_Reward.DecideDate = (DecideDate.ContentTemplate.FindName("DecideDate", DecideDate) as DatePicker).SelectedDate;
+                BUS.BUS.InsertReward(item);
+                Grid.ItemsSource = BUS.BUS.ListReward();
+
             }
         }
 
@@ -119,5 +124,58 @@ namespace HRM.GUI
         }
 
         #endregion
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            //FrameworkElement element = Grid.Columns[6].GetCellContent(e.Row);
+            //if (element.GetType() == typeof(CheckBox))
+            //{
+            //    if (((CheckBox)element).IsChecked == true)
+            //    {
+            //        HISTORY Item = Grid.SelectedItem as HISTORY;
+            //        LstItemChange.Add(Item.ID);
+            //    }
+            //}
+            //HISTORY Item = Grid.SelectedItem as HISTORY;
+            LstItemChange.Add(NewRow);
+
+        }
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as REWARD;
+            FrameworkElement EmpID = Grid.Columns[0].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)EmpID).SelectedValue.ToString();
+                NewRow.EmployeeID = eno;
+            }
+            FrameworkElement RewardName = Grid.Columns[1].GetCellContent(e.Row);
+            if (RewardName.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)RewardName).Text.Trim();
+                NewRow.RewardName = eno;
+            }
+            FrameworkElement DecideDate = Grid.Columns[2].GetCellContent(e.Row);
+            if (DecideDate.GetType() == typeof(ContentPresenter))
+            {
+                var _DecideDate = ((ContentPresenter)DecideDate);
+                if ((_DecideDate.ContentTemplate.FindName("DecideDate", _DecideDate) as DatePicker).SelectedDate != null)
+                {
+                    NewRow.DecideDate = (_DecideDate.ContentTemplate.FindName("DecideDate", _DecideDate) as DatePicker).SelectedDate;
+                }
+
+            }
+            FrameworkElement DecideNum = Grid.Columns[3].GetCellContent(e.Row);
+            if (DecideNum.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)DecideNum).Text.Trim();
+                NewRow.DecideNum = eno;
+            }
+
+
+
+        }
+
+
     }
 }

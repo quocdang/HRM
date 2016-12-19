@@ -15,7 +15,9 @@
     </UserControl.Resources>
     <ScrollViewer>
         <Grid>
-            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Width="1000" Height="500" CellEditEnding="Grid_CellEditEnding" RowEditEnding="Grid_RowEditEnding" 
+                      CanUserAddRows="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
                     <DataGridTextColumn Header="Khen Thưởng" Binding="{Binding RewardName}"/>

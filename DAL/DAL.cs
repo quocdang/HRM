@@ -591,7 +591,7 @@ namespace DAL
                 ALLOWANCE _Allowance = new ALLOWANCE();
                 _Allowance.Descr = Allowance.Descr;
                 _Allowance.Name = Allowance.Name;
-                _Allowance.Money = Allowance.Money;
+                _Allowance.Rate = Allowance.Rate;
 
                 db.ALLOWANCE.Add(_Allowance);
             }
@@ -600,7 +600,7 @@ namespace DAL
                 ALLOWANCE _Allowance = db.ALLOWANCE.SingleOrDefault(m => m.ID == Allowance.ID);
                 _Allowance.Descr = Allowance.Descr;
                 _Allowance.Name = Allowance.Name;
-                _Allowance.Money = Allowance.Money;
+                _Allowance.Rate = Allowance.Rate;
             }
             db.SaveChanges();
         }
@@ -1016,7 +1016,7 @@ namespace DAL
                 sal.EmployeeID = salary.EmployeeID;
                 sal.WorkDays = salary.WorkDays;
                 sal.Deducttion = salary.Deducttion;
-                sal.Allowance = salary.EmployeeID;
+                sal.Allowance = salary.Allowance;
                 db.SALARY.Add(sal);
             }
             else
@@ -1026,7 +1026,7 @@ namespace DAL
                 sal.EmployeeID = salary.EmployeeID;
                 sal.WorkDays = salary.WorkDays;
                 sal.Deducttion = salary.Deducttion;
-                sal.Allowance = salary.EmployeeID;
+                sal.Allowance = salary.Allowance;
                 db.SALARY.Add(sal);
             }
             db.SaveChanges();

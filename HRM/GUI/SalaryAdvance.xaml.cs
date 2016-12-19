@@ -23,12 +23,15 @@ namespace HRM.GUI
     /// </summary>
     public partial class SalaryAdvance : UserControl, WPFTabbedMDI
     {
+        List<SALARY_ADVANCE> LstItemChange;
+        SALARY_ADVANCE NewRow;
         public SalaryAdvance()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAdvance());
             Grid.ItemsSource = collectionView;
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+            LstItemChange = new List<SALARY_ADVANCE>();
 
         }
         #region ITabbedMDI Members
@@ -91,18 +94,17 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-
-            foreach (var item in row_list)
+            foreach (var item in LstItemChange)
             {
-                SALARY_ADVANCE _Advance = new SALARY_ADVANCE();
-                _Advance.SalaryAdvanceCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
-                _Advance.Reason = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
-                _Advance.Money = decimal.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
-                _Advance.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
+                //SALARY_ADVANCE _Advance = new SALARY_ADVANCE();
+                //_Advance.SalaryAdvanceCode = (Grid.Columns[0].GetCellContent(item) as TextBlock).Text;
+                //_Advance.Reason = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                //_Advance.Money = decimal.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
+                //_Advance.EmployeeID = (Grid.Columns[1].GetCellContent(item) as ComboBox).SelectedValue.ToString();
 
-                BUS.BUS.InsertAdvance(_Advance);
+                BUS.BUS.InsertAdvance(item);
             }
+            Grid.ItemsSource = BUS.BUS.ListAdvance();
         }
 
 
@@ -118,5 +120,39 @@ namespace HRM.GUI
         }
 
         #endregion
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as SALARY_ADVANCE;
+            FrameworkElement SalaryAdvanceCode = Grid.Columns[1].GetCellContent(e.Row);
+            if (SalaryAdvanceCode.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)SalaryAdvanceCode).Text.Trim();
+                NewRow.SalaryAdvanceCode = eno;
+            }
+            FrameworkElement EmpID = Grid.Columns[0].GetCellContent(e.Row);
+            if (EmpID.GetType() == typeof(ComboBox))
+            {
+                var eno = ((ComboBox)EmpID).SelectedValue.ToString();
+                NewRow.EmployeeID = eno;
+            }
+            FrameworkElement Money = Grid.Columns[1].GetCellContent(e.Row);
+            if (Money.GetType() == typeof(TextBox))
+            {
+                var eno = decimal.Parse(((TextBox)Money).Text.Trim());
+                NewRow.Money = eno;
+            }
+            FrameworkElement Reason = Grid.Columns[2].GetCellContent(e.Row);
+            if (Reason.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Reason).Text.Trim();
+                NewRow.Reason = eno;
+            }
+        }
+
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            LstItemChange.Add(NewRow);
+        }
     }
 }

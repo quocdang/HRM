@@ -7,9 +7,10 @@
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         mc:Ignorable="d"
         Height="300" Width="300">
-    <Grid>
-        <WindowsFormsHost Name="WinFormHost" >
-            <rv:ReportViewer x:Name="RptViewer"></rv:ReportViewer>
+    <Grid Height="300" Width="300">
+        <WindowsFormsHost Name="WinFormHost"  Height="300" Width="300">
+            <rv:ReportViewer x:Name="RptViewer" Height="300" Width="300"></rv:ReportViewer>
         </WindowsFormsHost>
+
     </Grid>
 </UserControl>

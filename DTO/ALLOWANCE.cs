@@ -14,8 +14,7 @@ namespace DTO
         [StringLength(100)]
         public string Name { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? Money { get; set; }
+        public int? Rate { get; set; }
 
         [StringLength(50)]
         public string Descr { get; set; }

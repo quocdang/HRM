@@ -20,8 +20,6 @@ namespace HRM.GUI
     /// </summary>
     public partial class ReportSalary : UserControl, WPFTabbedMDI
     {
-        HRMDataSetTableAdapters.SALARYTableAdapter _dataAdapter;
-        HRMDataSet salaryDataSet;
         public ReportSalary()
         {
             InitializeComponent();
@@ -73,21 +71,32 @@ namespace HRM.GUI
         {
             if (!_isRptViewerLoaded)
             {
-                LocalReport report = new LocalReport();
-                report.ReportEmbeddedResource = "HRM.Report.SalaryReport.rdlc";
+                ReportDataSource rptDataSource = new ReportDataSource();
+
+                NameOfDataSource dataset = new NameOfDataSource();
+
+                dataset.BeginInit();
 
 
-                //Create the dataset            
-                salaryDataSet = new HRMDataSet();
-                _dataAdapter = new HRMDataSetTableAdapters.SALARYTableAdapter();
+                
+                rptDataSource.Name = "NameOfDataSet";
+                rptDataSource.Value = dataset.CONTRACT;
+                this.RptViewer.LocalReport.DataSources.Add(rptDataSource);
+                this.RptViewer.LocalReport.ReportEmbeddedResource =
+                            "Report1.rdlc";
+                
+                dataset.EndInit();
+                var s = dataset.CONTRACT.Count;
+                //fill data into adventureWorksDataSet
+                NameOfDataSourceTableAdapters.CONTRACTTableAdapter datasetAdapter =
+                            new NameOfDataSourceTableAdapters.CONTRACTTableAdapter();
 
-                salaryDataSet.DataSetName = "SalaryDataSet";
-                salaryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-                _dataAdapter.ClearBeforeFill = true;
+                datasetAdapter.ClearBeforeFill = true;
+                datasetAdapter.Fill(dataset.CONTRACT);
 
-                //Created datasource and binding source
-                ReportDataSource dataSource = new ReportDataSource();
-                System.Windows.Forms.BindingSource source = new System.Windows.Forms.BindingSource();
+                RptViewer.RefreshReport();
+
+                _isRptViewerLoaded = true;
             }
         }
 

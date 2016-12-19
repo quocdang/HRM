@@ -17,11 +17,9 @@ namespace DTO
 
         public int? WorkDays { get; set; }
 
-        [StringLength(10)]
-        public string Allowance { get; set; }
+        public int? Allowance { get; set; }
 
-        [StringLength(10)]
-        public string Deducttion { get; set; }
+        public int? Deducttion { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? RealSalary { get; set; }

@@ -26,7 +26,7 @@ namespace HRM.GUI
     /// </summary>
     public partial class Contract : UserControl,WPFTabbedMDI
     {
-        public List<CONTRACT> LstContract;
+        public List<CONTRACT> LstItemChange;
         public CONTRACT NewRow;
         public Contract()
         {
@@ -35,6 +35,7 @@ namespace HRM.GUI
             Grid.ItemsSource = collectionView;
             ContactType.ItemsSource = BUS.BUS.ListContractType();
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
+            LstItemChange = new List<CONTRACT>();
 
 
         }
@@ -99,7 +100,7 @@ namespace HRM.GUI
         public void Save()
         {
 
-            foreach (CONTRACT item in LstContract)
+            foreach (CONTRACT item in LstItemChange)
             {
                 //var FromDate = (Grid.Columns[3].GetCellContent(item) as ContentPresenter);
                 //var ToDate = (Grid.Columns[4].GetCellContent(item) as ContentPresenter);
@@ -170,7 +171,7 @@ namespace HRM.GUI
             FrameworkElement ToDate = Grid.Columns[4].GetCellContent(e.Row);
             if (ToDate.GetType() == typeof(ContentPresenter))
             {
-                var _ToDate = ((ContentPresenter)FromDate);
+                var _ToDate = ((ContentPresenter)ToDate);
                 if ((_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate != null)
                 {
                     NewRow.ToDate = (_ToDate.ContentTemplate.FindName("ToDate", _ToDate) as DatePicker).SelectedDate;
@@ -208,7 +209,7 @@ namespace HRM.GUI
 
         private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            LstContract.Add(NewRow);
+            LstItemChange.Add(NewRow);
         }
     }
 }

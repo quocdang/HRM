@@ -23,13 +23,14 @@ namespace HRM.GUI
     /// </summary>
     public partial class Deduction : UserControl, WPFTabbedMDI
     {
-        public IEnumerable lmdb;
+        List<DEDUCTION> LstItemChange;
+        DEDUCTION NewRow;
         public Deduction()
         {
             InitializeComponent();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(BUS.BUS.ListAllowance());
             Grid.ItemsSource = collectionView;
-            lmdb = collectionView;
+            LstItemChange = new List<DEDUCTION>();
         }
         #region ITabbedMDI Members
         /// <summary>
@@ -91,14 +92,13 @@ namespace HRM.GUI
         /// </summary>
         public void Save()
         {
-            var row_list = GetDataGridRows(Grid);
-            foreach (var item in row_list)
+            foreach (var item in LstItemChange)
             {
-                DEDUCTION _Deduct = new DEDUCTION();
-                _Deduct.Descr = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
-                _Deduct.Name = (Grid.Columns[1].GetCellContent(item) as TextBlock).Text;
-                _Deduct.Rate = int.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
-                BUS.BUS.InsertDeduction(_Deduct);
+                //DEDUCTION _Deduct = new DEDUCTION();
+                //_Deduct.Descr = (Grid.Columns[3].GetCellContent(item) as TextBlock).Text;
+                //_Deduct.Name = (Grid.Columns[1].GetCellContent(item) as TextBlock).Text;
+                //_Deduct.Rate = int.Parse((Grid.Columns[2].GetCellContent(item) as TextBlock).Text);
+                BUS.BUS.InsertDeduction(item);
                 Grid.ItemsSource = BUS.BUS.ListDeduction();
             }
         }
@@ -115,5 +115,46 @@ namespace HRM.GUI
         }
 
         #endregion
+        private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            //FrameworkElement element = Grid.Columns[6].GetCellContent(e.Row);
+            //if (element.GetType() == typeof(CheckBox))
+            //{
+            //    if (((CheckBox)element).IsChecked == true)
+            //    {
+            //        HISTORY Item = Grid.SelectedItem as HISTORY;
+            //        LstItemChange.Add(Item.ID);
+            //    }
+            //}
+            //HISTORY Item = Grid.SelectedItem as HISTORY;
+            LstItemChange.Add(NewRow);
+
+        }
+
+        private void Grid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            NewRow = Grid.SelectedItem as DEDUCTION;
+            FrameworkElement Name = Grid.Columns[0].GetCellContent(e.Row);
+            if (Name.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Name).Text.Trim();
+                NewRow.Name = eno;
+            }
+            FrameworkElement Rate = Grid.Columns[1].GetCellContent(e.Row);
+            if (Rate.GetType() == typeof(TextBox))
+            {
+                var eno = int.Parse(((TextBox)Rate).Text);
+                NewRow.Rate = eno;
+            }
+            FrameworkElement Descr = Grid.Columns[2].GetCellContent(e.Row);
+            if (Descr.GetType() == typeof(TextBox))
+            {
+                var eno = ((TextBox)Descr).Text;
+                NewRow.Descr = eno;
+            }
+
+
+        }
+
     }
 }

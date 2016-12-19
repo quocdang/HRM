@@ -15,12 +15,30 @@
     </UserControl.Resources>
     <ScrollViewer>
         <Grid>
-            <DataGrid x:Name="LstSalary" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500"
-                      CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500"
+                      CanUserAddRows="True" AutoGenerateColumns="False" CellEditEnding="Grid_CellEditEnding" RowEditEnding="Grid_RowEditEnding">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã Nhân Viên" Binding="{Binding  EmployeeID}"/>
+                    <DataGridComboBoxColumn x:Name="EmployeeID" Header="Nhân Viên" SelectedValueBinding="{Binding EmployeeID}" SelectedValuePath="EmployeeID" DisplayMemberPath="LastName" Width="100"/>
                     <DataGridTextColumn Header="Số Ngày Công" Binding="{Binding WorkDays}"/>
-                    <DataGridTextColumn Header="Phụ Cấp" Binding="{Binding Allowance}"/>
+                    <!--<DataGridTextColumn Header="Phụ Cấp" Binding="{Binding Allowance}"/>-->
+                    <DataGridTemplateColumn Header="Phụ Cấp">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox x:Name="_LstAllowance">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox x:Name="aaaaa" IsChecked="{Binding IsSelected}" Width="20" VerticalAlignment="Center" Click="CheckBox_Click" />
+                                                <TextBlock x:Name="aaa" Text="{Binding Allowance}" VerticalAlignment="Center" Width="100" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridComboBoxColumn x:Name="Allowance" Header="Phụ Cấp" SelectedValueBinding="{Binding Allowance}" SelectedValuePath="ID" DisplayMemberPath="Name" Width="100"/>
                     <DataGridTextColumn Header="Khấu Trừ" Binding="{Binding Deducttion}"/>
                     <DataGridTextColumn Header="Thực Lãnh" Binding="{Binding RealSalary}"/>
                 </DataGrid.Columns>

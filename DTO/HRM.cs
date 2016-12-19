@@ -36,10 +36,6 @@ namespace DTO
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ALLOWANCE>()
-                .Property(e => e.Money)
-                .HasPrecision(19, 4);
-
             modelBuilder.Entity<CANDIDATE>()
                 .Property(e => e.CandidateCode)
                 .IsUnicode(false);
