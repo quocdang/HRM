@@ -239,5 +239,43 @@ namespace HRM
 
 
         }
+
+        private void txtId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            string filter = t.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(LstEmployee.ItemsSource);
+            if (filter == "")
+                cv.Filter = null;
+            else
+            {
+                cv.Filter = o =>
+                {
+                    EMPLOYEE p = o as EMPLOYEE;
+                    if (t.Name == "txtId")
+                        return (p.EmployeeID == filter);
+                    return (p.EmployeeID.StartsWith(filter));
+                };
+            }
+        }
+
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            string filter = t.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(LstEmployee.ItemsSource);
+            if (filter == "")
+                cv.Filter = null;
+            else
+            {
+                cv.Filter = o =>
+                {
+                    EMPLOYEE p = o as EMPLOYEE;
+                    if (t.Name == "txtName")
+                        return (p.FirstName == filter);
+                    return (p.FirstName.ToUpper().StartsWith(filter.ToUpper()));
+                };
+            }
+        }
     }
 }

@@ -18,10 +18,11 @@
         <StackPanel>
 
             <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="1000"
-                      CanUserAddRows="True" AutoGenerateColumns="False" CellEditEnding="Grid_CellEditEnding" RowEditEnding="Grid_RowEditEnding">
+                      CanUserAddRows="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Code}"  Header="Mã Phụ Cấp" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Tên Phụ Cấp" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Rate}"  Header="Chi Phí" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Money}"  Header="Chi Phí" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Descr}"  Header="Mô Tả" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>

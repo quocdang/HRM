@@ -14,12 +14,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <!--BeginningEdit="LstEmployee_BeginningEdit" 
-                  AddingNewItem="LstEmployee_AddingNewItem" RowEditEnding="LstEmployee_RowEditEnding"-->
+    <!--ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="1000" Height="500"-->
     <ScrollViewer>
         <Grid>
-        <DataGrid x:Name="LstEmployee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="550" CanUserAddRows="True" AutoGenerateColumns="False" 
-                  Loaded="LstEmployee_Loaded" RowEditEnding="LstEmployee_RowEditEnding" CellEditEnding="LstEmployee_CellEditEnding" >
+        <DataGrid x:Name="LstEmployee" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="550" CanUserAddRows="True" AutoGenerateColumns="False" Loaded="LstEmployee_Loaded">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Save"></MenuItem>
@@ -28,28 +26,8 @@
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100">
-                        <DataGridTextColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Content, RelativeSource=
-                                         {RelativeSource Mode=TemplatedParent}}"/>
-                                    <TextBox x:Name="txtId" Width="100" TextChanged="txtId_TextChanged"  />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTextColumn.HeaderTemplate>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding FirstName}"  Header="Họ" Width="100">
-                        <DataGridTextColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Content, RelativeSource=
-                                         {RelativeSource Mode=TemplatedParent}}"/>
-                                    <TextBox x:Name="txtName" Width="100" TextChanged="txtName_TextChanged"  />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTextColumn.HeaderTemplate>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding EmployeeID}"  Header="Mã Nhân Viên" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}"  Header="Họ" Width="100"/>
                     <DataGridTextColumn Binding="{Binding LastName}"  Header="Tên" Width="200"/>
                     <DataGridTemplateColumn Header="Ngày Sinh">
                         <DataGridTemplateColumn.CellTemplate>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="HRM.GUI.Candicate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HRM.GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="C:\Users\minhq\OneDrive\Project\HRM\HRM\Style\DataGrid.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer>
+
+        <Grid>
+            <DataGrid x:Name="Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1000" Height="500"
+                      CanUserAddRows="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding CandidateCode}"  Header="Mã Ứng Viên" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding RecruitmentCode}"  Header="Mã Đợt Tuyển" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}"  Header="Họ" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding LastName}"  Header="Tên" Width="200"/>
+                    <DataGridComboBoxColumn x:Name="XGender" Header="Giới Tính" SelectedValueBinding="{Binding Gender}" SelectedValuePath="Code" DisplayMemberPath="Name" Width="100"/>
+
+                    <DataGridTemplateColumn Header="Ngày Sinh">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker x:Name="DateBirth" SelectedDate="{Binding BirthDay}" Width="200" >
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <DataGridTextColumn Binding="{Binding BirthPlace}"  Header="Nơi Sinh" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding MainAddress}"  Header="Địa chỉ Chính" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding ContactAddress}"  Header="Địa chỉ liên hệ" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding CellPhone}"  Header="Email" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding HomePhone}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Photo}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Language}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Education}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Job}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Experience}" Header="Phone" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding ExpectSalary}" Header="Phone" Width="100"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Reporting.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +10,58 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DTO;
+using BUS;
+using HRM.GUI;
+using System.Data;
+using Microsoft.Reporting.WinForms;
 
 namespace HRM.GUI
 {
     /// <summary>
-    /// Interaction logic for rptLuong.xaml
+    /// Interaction logic for RptContact.xaml
     /// </summary>
     public partial class ReportSalary : UserControl, WPFTabbedMDI
     {
         public ReportSalary()
         {
             InitializeComponent();
-            RptViewer.Load += RptViewer_Load;
+            DemoReport.ProcessingMode = ProcessingMode.Local;
+            DemoReport.Load += DemoReport_Load;
+        }
+
+        private void DemoReport_Load(object sender, EventArgs e)
+        {
+            //var db = BUS.BUS.ListContract();
+            //DTO.HRM db = new DTO.HRM();
+            ////var data = db.CONTRACT;
+            //DemoReport.ProcessingMode = ProcessingMode.Local;
+            //DemoReport.LocalReport.ReportPath = "C:\\Users\\minhq\\OneDrive\\Project\\HRM\\HRM\\GUI\\Report1.rdlc";
+
+            DataSet1 dataset = new DataSet1();
+            dataset.BeginInit();
+            //fill data into DataSet
+            DataSet1TableAdapters.CONTRACTTableAdapter datasetAdapter =
+                new DataSet1TableAdapters.CONTRACTTableAdapter();
+
+            datasetAdapter.ClearBeforeFill = true;
+            datasetAdapter.Fill(dataset.CONTRACT);
+            ReportDataSource rptdataSource = new ReportDataSource();
+            rptdataSource.Name = "DataSet1";
+            rptdataSource.Value = dataset.CONTRACT;
+
+            DemoReport.LocalReport.DataSources.Add(rptdataSource);
+
+
+            DemoReport.LocalReport.ReportEmbeddedResource = "HRM.Report1.rdlc";
+            //DemoReport.LocalReport.ReportEmbeddedResource = "GUI.Report1.rdlc";
+            DemoReport.RefreshReport();
+            dataset.EndInit();
         }
         #region ITabbedMDI Members
-        /// <summary>
-        /// Get Employee UserControl to return MDI
-        /// </summary>
+
         public UserControl CurrType
         {
             get
@@ -37,9 +70,6 @@ namespace HRM.GUI
             }
         }
 
-        /// <summary>
-        /// Check active
-        /// </summary>
         public bool Active
         {
             get
@@ -47,9 +77,7 @@ namespace HRM.GUI
                 return true;
             }
         }
-        /// <summary>
-        /// Set Name of UC
-        /// </summary>
+
         public string UniqueTabName
         {
             get
@@ -57,57 +85,20 @@ namespace HRM.GUI
                 return "ReportSalary";
             }
         }
-        /// <summary>
-        /// Set Title
-        /// </summary>
+
         public string Title
         {
             get { return "ReportSalary"; }
         }
 
-        #endregion
-        private bool _isRptViewerLoaded;
-        private void RptViewer_Load(object sender, EventArgs e)
-        {
-            if (!_isRptViewerLoaded)
-            {
-                ReportDataSource rptDataSource = new ReportDataSource();
-
-                NameOfDataSource dataset = new NameOfDataSource();
-
-                dataset.BeginInit();
-
-
-                
-                rptDataSource.Name = "NameOfDataSet";
-                rptDataSource.Value = dataset.CONTRACT;
-                this.RptViewer.LocalReport.DataSources.Add(rptDataSource);
-                this.RptViewer.LocalReport.ReportEmbeddedResource =
-                            "Report1.rdlc";
-                
-                dataset.EndInit();
-                var s = dataset.CONTRACT.Count;
-                //fill data into adventureWorksDataSet
-                NameOfDataSourceTableAdapters.CONTRACTTableAdapter datasetAdapter =
-                            new NameOfDataSourceTableAdapters.CONTRACTTableAdapter();
-
-                datasetAdapter.ClearBeforeFill = true;
-                datasetAdapter.Fill(dataset.CONTRACT);
-
-                RptViewer.RefreshReport();
-
-                _isRptViewerLoaded = true;
-            }
-        }
-
         public void Save()
         {
-            throw new NotImplementedException();
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

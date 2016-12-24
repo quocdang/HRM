@@ -6,30 +6,30 @@
              xmlns:local="clr-namespace:HRM.GUI"
              mc:Ignorable="d" 
              Background="White">
-    <Grid Height="500" Width="1000">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="66" />
-            <ColumnDefinition Width="Auto" MinWidth="36" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxAllowance" Width="auto" Margin="0,1,0,-41" >
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="listBoxAllowance" Width="auto" Height="auto" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Name="CheckAllowance" Content="{Binding Name}" Tag="{Binding ID}"></CheckBox>
+                    <CheckBox Name="CheckAllowance" Content="{Binding Name}" Tag="{Binding Code}"></CheckBox>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Grid.Row="1" Grid.Column="1" x:Name="listBoxDeduction" Width="auto" Height="auto" Margin="0,0,0,-40">
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="listBoxDeduction" Width="auto" Height="auto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Name="CheckDeduction" Content="{Binding Name}" Tag="{Binding ID}"></CheckBox>
+                    <CheckBox Name="CheckDeduction" Content="{Binding Name}" Tag="{Binding Code}"></CheckBox>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ComboBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="comboBox"/>
+        <ComboBox Grid.ColumnSpan="2" x:Name="comboBox"/>
     </Grid>
 </UserControl>

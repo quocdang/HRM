@@ -369,7 +369,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ContractType.Value)</Value>
+                              <Value>=Fields!ContractType.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -617,7 +617,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>NameOfDataSet</DataSetName>
+        <DataSetName>DataSet1</DataSetName>
         <Height>1.2cm</Height>
         <Width>20cm</Width>
         <Style>
@@ -643,18 +643,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="NameOfDataSource">
+    <DataSource Name="DataSet1">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>85c03ac2-5662-4e1a-ba18-48efd3937e4e</rd:DataSourceID>
+      <rd:DataSourceID>be93e151-11d0-453b-acf4-5f9b1dee86be</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="NameOfDataSet">
+    <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>NameOfDataSource</DataSourceName>
+        <DataSourceName>DataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -692,8 +692,8 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>NameOfDataSource</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\minhq\OneDrive\Project\HRM\HRM\NameOfDataSource.xsd</rd:SchemaPath>
+        <rd:DataSetName>DataSet1</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\minhq\OneDrive\Project\HRM\HRM\DataSet1.xsd</rd:SchemaPath>
         <rd:TableName>CONTRACT</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -702,5 +702,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>81abea18-2801-4596-bce8-8354f8ba05b5</rd:ReportID>
+  <rd:ReportID>34f8b877-4ad5-4ccd-a2b9-fc990f889ad6</rd:ReportID>
 </Report>

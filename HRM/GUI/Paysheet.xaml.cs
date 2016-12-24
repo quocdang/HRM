@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using BUS;
 using DTO;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using HRM.GUI;
 
 namespace HRM
 {
@@ -31,8 +34,13 @@ namespace HRM
             Grid.ItemsSource = BUS.BUS.DsLuong();
             EmployeeID.ItemsSource = BUS.BUS.DsEmployee();
             LstItemChange = new List<SALARY>();
+            //DataContext = new {
+            //    info = BUS.BUS.DsLuong(),
+            //    extendedInfo = BUS.BUS.DsEmployee(),
+            //    extendedInfo1 = BUS.BUS.ListAllowance(),
+            //};
         }
-
+       
         #region ITabbedMDI Members
 
         public UserControl CurrType
@@ -113,24 +121,38 @@ namespace HRM
                 var eno = int.Parse(((TextBox)WorkDays).Text.Trim());
                 NewRow.WorkDays = eno;
             }
-            FrameworkElement Allowance = Grid.Columns[2].GetCellContent(e.Row);
-            if (Allowance.GetType() == typeof(ComboBox))
+            using (DTO.HRM db = new DTO.HRM())
             {
-                var eno = ((ComboBox)Allowance).SelectedValue;
-                //NewRow.Allowance = eno;
+
+
+                NewRow.Allowance = db.SALARY.SingleOrDefault(m => m.EmployeeID == NewRow.EmployeeID).Allowance;
+                NewRow.Deducttion = db.SALARY.SingleOrDefault(m => m.EmployeeID == NewRow.EmployeeID).Deducttion;
+                NewRow.RealSalary = db.SALARY.SingleOrDefault(m => m.EmployeeID == NewRow.EmployeeID).RealSalary;
+
+                SqlParameter param1 = new SqlParameter("@EmpID", NewRow.EmployeeID);
+                SqlParameter param2 = new SqlParameter("@WorkDays", NewRow.WorkDays);
+
+                var ReadSalary = db.Database.SqlQuery<decimal>("RealSalary @EmpID , @WorkDays", param1, param2).Single();
             }
-            FrameworkElement Deducttion = Grid.Columns[3].GetCellContent(e.Row);
-            if (Deducttion.GetType() == typeof(ComboBox))
-            {
-                var eno = ((ComboBox)Deducttion).SelectedValue;
-                //NewRow.Deducttion = eno;
-            }
-            FrameworkElement Descr = Grid.Columns[4].GetCellContent(e.Row);
-            if (Descr.GetType() == typeof(TextBox))
-            {
-                var eno = ((TextBox)Descr).Text;
-                //NewRow.RealSalary = eno;
-            }
+            
+            //FrameworkElement Allowance = Grid.Columns[2].GetCellContent(e.Row);
+            //if (Allowance.GetType() == typeof(ComboBox))
+            //{
+            //    var eno = ((ComboBox)Allowance).SelectedValue;
+            //    //NewRow.Allowance = eno;
+            //}
+            //FrameworkElement Deducttion = Grid.Columns[3].GetCellContent(e.Row);
+            //if (Deducttion.GetType() == typeof(ComboBox))
+            //{
+            //    var eno = ((ComboBox)Deducttion).SelectedValue;
+            //    //NewRow.Deducttion = eno;
+            //}
+            //FrameworkElement Descr = Grid.Columns[4].GetCellContent(e.Row);
+            //if (Descr.GetType() == typeof(TextBox))
+            //{
+            //    var eno = ((TextBox)Descr).Text;
+            //    //NewRow.RealSalary = eno;
+            //}
         }
 
         private void Grid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
@@ -139,11 +161,16 @@ namespace HRM
 
         }
 
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        private void Allowance_Click(object sender, RoutedEventArgs e)
         {
-            CheckBox clickedBox = (CheckBox)sender;
+            AllowanceFee a = new AllowanceFee();
+            a.Show();
+        }
 
-            
+        private void Deduction_Click(object sender, RoutedEventArgs e)
+        {
+            DeductionFee a = new DeductionFee();
+            a.Show();
         }
     }
 }
